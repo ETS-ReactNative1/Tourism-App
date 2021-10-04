@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Wander, Flow } from 'react-native-animated-spinkit'
 
@@ -15,7 +15,7 @@ const Loader = ({ navigation }) => {
     return (
 
         <View style={styles.container}>
-            <Wander size={78} color="orange"
+            <Wander size={80} color="orange"
             />
         </View>
     )

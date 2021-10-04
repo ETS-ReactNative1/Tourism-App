@@ -5,37 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import './global';
 import global from './global'
 
+const Signup = ({ navigation }) => {
 
 
 
-const Login = ({navigation}) => {
-
-
-
-    const [hidePass, setHidePass] = useState(true);
-    const [disabled, setDisabled] = useState(true);
-    const [username, setUsername] = useState(null);
-    const [password, setPassword] = useState(null);
-
-
-
-    const handleChange = (e) => {
-        setPassword(e)
-        if (username != null && e != null) {
-            if (username.length > 0 && e.length >= 3) {
-                setDisabled(false)
-                console.log(username, 'ee')
-                console.log(password, 'eed')
-            } else {
-                setDisabled(true)
-            }
-        }
-
-    }
-
-
-
-
+    const [hidePass, setHidePass] = useState(true)
 
 
     return (
@@ -47,30 +21,33 @@ const Login = ({navigation}) => {
                 </View>
                 <View style={styles.subContainer}>
                     <View style={styles.title}>
-                        <Text style={styles.titleText}>Login</Text>
-                        <Text style={{ fontSize: 18, marginVertical: 5, fontFamily: boldFont }}>Please sign in to continue</Text>
+                        <Text style={styles.titleText}>Create Account</Text>
+                        <Text style={{ fontSize: 18, marginVertical: 5, fontFamily: boldFont }}>Please sign up to continue</Text>
                     </View>
                     <View style={styles.textInputContainer}>
+                        <View style={styles.password}>
+                            <Icon name={"email"} size={20} color={'orange'} />
+                            <TextInput placeholder='Email' style={styles.search}>
+                            </TextInput>
+                        </View>
                         <View style={styles.username}>
                             <Icon name={"account"} size={20} color={'orange'} />
-                            <TextInput placeholder='Username' style={styles.search}
-                                onChangeText={(e) => setUsername(e)}>
+                            <TextInput placeholder='Username' style={styles.search}>
                             </TextInput>
                         </View>
                         <View style={styles.password}>
                             <Icon name={"lock"} size={20} color={'orange'} />
                             <TextInput placeholder='Password' style={styles.search}
-                                secureTextEntry={hidePass ? true : false}
-                                onChangeText={(e) => handleChange(e)}>
+                                secureTextEntry={hidePass ? true : false}>
                             </TextInput>
                             <Icon name={hidePass ? 'eye-off' : 'eye'} size={20} color={'grey'}
                                 onPress={() => setHidePass(!hidePass)} />
                         </View>
-                        <TouchableOpacity disabled={disabled} style={styles.btn}>
-                            <ImageBackground style={[styles.button, disabled && { ...styles.button, opacity: 0.4 }]} imageStyle={{ height: 50, width: 120, borderRadius: 40 }} source={require('../assets/bb.jpg')}>
+                        <TouchableOpacity style={styles.btn}>
+                            <ImageBackground style={styles.button} imageStyle={{ height: 50, width: 120, borderRadius: 40 }} source={require('../assets/bb.jpg')}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                                    <Text style={{ color: 'white', fontSize: 20, fontFamily:liteFont}}>Login</Text>
-                                    <Icon style={{ paddingLeft: 5,marginTop: 4}} name={"arrow-right"} size={28} color={'white'} />
+                                    <Text style={{ color: 'white', fontSize: 18, fontFamily: liteFont, textAlign: 'center' }}>Sign Up</Text>
+                                    <Icon style={{ marginTop: 3, marginLeft: 2 }} name={"arrow-right"} size={28} color={'white'} />
                                 </View>
                             </ImageBackground>
                         </TouchableOpacity>
@@ -78,9 +55,9 @@ const Login = ({navigation}) => {
                 </View>
                 <View style={styles.footer}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Text style={{ color: 'black' ,fontFamily: boldFont}}>Don't have an account ?</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-                            <Text style={{ fontFamily:liteFont, color: 'orange', }}> Sign Up</Text>
+                        <Text style={{ color: 'black', fontFamily: boldFont }}>Already have a  account ?</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                            <Text style={{ fontFamily: liteFont, color: 'orange', }}> Sign in</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -90,7 +67,7 @@ const Login = ({navigation}) => {
     )
 }
 
-export default Login
+export default Signup
 
 
 const styles = StyleSheet.create({
@@ -112,7 +89,7 @@ const styles = StyleSheet.create({
     },
     subContainer: {
         padding: '5%',
-        marginVertical: 22
+        // marginVertical: 22,
     },
     title: {
         marginVertical: 20
