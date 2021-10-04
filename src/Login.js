@@ -79,7 +79,7 @@ const Login = ({navigation}) => {
                 <View style={styles.footer}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Text style={{ color: 'black' ,fontFamily: boldFont}}>Don't have an account ?</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+                        <TouchableOpacity>
                             <Text style={{ fontFamily:liteFont, color: 'orange', }}> Sign Up</Text>
                         </TouchableOpacity>
                     </View>

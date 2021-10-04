@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
 import LoginScreen from './Login';
-import SignupScreen from './Signup';
-
+import LoaderScreen from './Loader';
+// import SimpleLottie from "./Signup";
 
 
 
@@ -65,8 +65,8 @@ const Navigation = () => {
     return (
 
         <Stack.Navigator >
+            <Stack.Screen name="Loader" options={{ headerShown: false }} component={LoaderScreen} />
             <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginScreen} />
-            <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignupScreen} />
         </Stack.Navigator>
     );
 };
