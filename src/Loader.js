@@ -13,10 +13,12 @@ const Loader = ({ navigation }) => {
     }, 1000)
 
     return (
-
-        <View style={styles.container}>
-            <Wander size={80} color="orange"
-            />
+        <View>
+            <View style={styles.container}>
+            <Text style={{ fontSize: 60, color: 'orange',backgroundColor: 'white',textAlign: 'center',marginBottom:50}}>𝓜𝔂 𝓣𝓸𝓾𝓻𝓲𝓼𝓶</Text>
+                <Wander size={100} color="orange"
+                />
+            </View>
         </View>
     )
 }
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-    }
+        backgroundColor: 'white'
+    },
 
 })

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, ScrollView, Modal } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Flow } from 'react-native-animated-spinkit'
+
 
 import './global';
 import global from './global'
@@ -8,12 +10,63 @@ import global from './global'
 const Signup = ({ navigation }) => {
 
 
-
+    const [modal, setModal] = useState(false)
     const [hidePass, setHidePass] = useState(true)
+    const [email, setEmail] = useState(null)
+    const [username, setUsername] = useState(null)
+    const [password, setPassword] = useState(null)
+    const [disabled, setDisabled] = useState(true);
+
+
+    const handleChange = (e) => {
+        setPassword(e)
+        if (username != null && e != null) {
+            if (username.length > 0 && e.length >= 3) {
+                setDisabled(false)
+                console.log(username, 'ee')
+                console.log(password, 'eed')
+                console.log(email)
+            } else {
+                setDisabled(true)
+            }
+        }
+
+    }
+
+    const home = () => {
+        setModal(!modal)
+        setTimeout(() => {
+            navigation.navigate('HomePage')
+            // navigation.reset({
+            //     index: 0,
+            //     routes: [{ name: 'HomePage' }],
+            // })
+    
+        }, 1000)
+        
+    }
+
+
 
 
     return (
         <View style={styles.container}>
+            <Modal animationType="slide" transparent={true} visible={modal} onRequestClose={() => {
+                setModal(!modal);
+            }}>
+                <View style={styles.modalContainer}>
+                    <View style={{
+                        height: 300, width: 300, justifyContent: 'center', alignItems: 'center', justifyContent: 'center',
+                        backgroundColor: 'white', borderRadius: 20, elevation: 6,borderWidth:0.5,borderColor: 'orange'
+                    }}>  
+                        <Icon style={{ marginVertical: 5 }} name={"account-check-outline"} size={60} color={'green'} />
+                        <Text style={{ color: 'green', fontSize: 35, fontFamily: liteFont, textAlign: 'center' }}>Suuceesfully Registered</Text>
+                        <View style={{ marginTop: 40 }}>
+                            <Flow size={60} color="orange" />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={require('../assets/aa.jpg')}>
@@ -27,24 +80,27 @@ const Signup = ({ navigation }) => {
                     <View style={styles.textInputContainer}>
                         <View style={styles.password}>
                             <Icon name={"email"} size={20} color={'orange'} />
-                            <TextInput placeholder='Email' style={styles.search}>
+                            <TextInput placeholder='Email' style={styles.search}
+                                onChangeText={(e) => setEmail(e)}>
                             </TextInput>
                         </View>
                         <View style={styles.username}>
                             <Icon name={"account"} size={20} color={'orange'} />
-                            <TextInput placeholder='Username' style={styles.search}>
+                            <TextInput placeholder='Username' style={styles.search}
+                            onChangeText={(e) => setUsername(e)}>
                             </TextInput>
                         </View>
                         <View style={styles.password}>
                             <Icon name={"lock"} size={20} color={'orange'} />
                             <TextInput placeholder='Password' style={styles.search}
-                                secureTextEntry={hidePass ? true : false}>
+                                secureTextEntry={hidePass ? true : false}
+                                onChangeText={(e) => handleChange(e)}>
                             </TextInput>
                             <Icon name={hidePass ? 'eye-off' : 'eye'} size={20} color={'grey'}
                                 onPress={() => setHidePass(!hidePass)} />
                         </View>
-                        <TouchableOpacity style={styles.btn}>
-                            <ImageBackground style={styles.button} imageStyle={{ height: 50, width: 120, borderRadius: 40 }} source={require('../assets/bb.jpg')}>
+                        <TouchableOpacity disabled={disabled} style={styles.btn} onPress={() =>home()}>
+                            <ImageBackground style={[styles.button, disabled && { ...styles.button, opacity: 0.4 }]} imageStyle={{ height: 50, width: 120, borderRadius: 40 }} source={require('../assets/bb.jpg')}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ color: 'white', fontSize: 18, fontFamily: liteFont, textAlign: 'center' }}>Sign Up</Text>
                                     <Icon style={{ marginTop: 3, marginLeft: 2 }} name={"arrow-right"} size={28} color={'white'} />
@@ -147,5 +203,10 @@ const styles = StyleSheet.create({
     footer: {
         alignItems: 'center',
         marginTop: '20%'
+    },
+    modalContainer: {
+        alignItems: 'center',
+        marginVertical: 220,
+        flex: 1
     }
 })

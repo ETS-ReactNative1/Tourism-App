@@ -7,6 +7,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import LoginScreen from './Login';
 import LoaderScreen from './Loader';
 import SignupScreen from "./Signup";
+import HomePageScreen from "./HomePage";
+
 
 
 
@@ -68,6 +70,8 @@ const Navigation = () => {
             <Stack.Screen name="Loader" options={{ headerShown: false }} component={LoaderScreen} />
             <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginScreen} />
             <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignupScreen} />
+            <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomePageScreen} />
+
 
         </Stack.Navigator>
     );

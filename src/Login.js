@@ -34,10 +34,6 @@ const Login = ({navigation}) => {
     }
 
 
-
-
-
-
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
