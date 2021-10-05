@@ -44,7 +44,11 @@ const Login = ({ navigation }) => {
         console.log(config.url, config.data)
         axios(config)
             .then(function (response) {
-                setAsync(response.data.token)
+                if (response.data.status === 200) {
+                    setAsync(response.data.data.token)
+                } else{
+                    console.warn('Invalid')
+                }
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {
@@ -55,12 +59,12 @@ const Login = ({ navigation }) => {
 
 
     const setAsync = async (auth) => {
-            await AsyncStorage.setItem("MyToken", auth).then(() =>
-                navigation.reset({
-                    index: 0,
-                    routes: [{ name: 'HomePage' }],
-                })
-            )
+        await AsyncStorage.setItem("MyToken", auth).then(() =>
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'HomePage' }],
+            })
+        )
     }
 
 
