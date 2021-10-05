@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import './global';
 import global from './global'
 
 
-
-
-const Login = ({navigation}) => {
-
-
+const Login = ({ navigation }) => {
 
     const [hidePass, setHidePass] = useState(true);
     const [disabled, setDisabled] = useState(true);
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
-
-
 
     const handleChange = (e) => {
         setPassword(e)
@@ -32,6 +27,44 @@ const Login = ({navigation}) => {
         }
 
     }
+
+
+    const signIn = () => {
+        const data = new FormData()
+        data.append('username', username);
+        data.append('password', password);
+
+        var config = {
+            method: 'post',
+            url: global.baseUrl + 'logins/',
+            // headers: {
+            // },
+            data: data
+        };
+        console.log(config.url, config.data)
+        axios(config)
+            .then(function (response) {
+                setAsync(response.data.token)
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+
+    const setAsync = async (auth) => {
+            await AsyncStorage.setItem("MyToken", auth).then(() =>
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'HomePage' }],
+                })
+            )
+    }
+
+
+
 
 
     return (
@@ -62,11 +95,11 @@ const Login = ({navigation}) => {
                             <Icon name={hidePass ? 'eye-off' : 'eye'} size={20} color={'grey'}
                                 onPress={() => setHidePass(!hidePass)} />
                         </View>
-                        <TouchableOpacity disabled={disabled} style={styles.btn}>
+                        <TouchableOpacity disabled={disabled} style={styles.btn} onPress={() => signIn()}>
                             <ImageBackground style={[styles.button, disabled && { ...styles.button, opacity: 0.4 }]} imageStyle={{ height: 50, width: 120, borderRadius: 40 }} source={require('../assets/bb.jpg')}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                                    <Text style={{ color: 'white', fontSize: 20, fontFamily:liteFont}}>Login</Text>
-                                    <Icon style={{ paddingLeft: 5,marginTop: 4}} name={"arrow-right"} size={28} color={'white'} />
+                                    <Text style={{ color: 'white', fontSize: 20, fontFamily: liteFont }}>Login</Text>
+                                    <Icon style={{ paddingLeft: 5, marginTop: 4 }} name={"arrow-right"} size={28} color={'white'} />
                                 </View>
                             </ImageBackground>
                         </TouchableOpacity>
@@ -74,9 +107,9 @@ const Login = ({navigation}) => {
                 </View>
                 <View style={styles.footer}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Text style={{ color: 'black' ,fontFamily: boldFont}}>Don't have an account ?</Text>
+                        <Text style={{ color: 'black', fontFamily: boldFont }}>Don't have an account ?</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-                            <Text style={{ fontFamily:liteFont, color: 'orange', }}> Sign Up</Text>
+                            <Text style={{ fontFamily: liteFont, color: 'orange', }}> Sign Up</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
