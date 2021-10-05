@@ -51,9 +51,7 @@ const Signup = ({ navigation }) => {
         axios(config)
             .then(function (response) {
                 if (response.data.status === 200) {
-                    home()
                     setAsync(response.data.token)
-
                 } else {
                     alert('failed to Signup')
                 }
@@ -66,21 +64,23 @@ const Signup = ({ navigation }) => {
 
 
 
-    const setAsync = async (auth) => {
-        console.log(auth, "okoko")
-        await AsyncStorage.setItem("MyToken", auth).then(() =>
-            navigation.reset({
-                index: 0,
-                routes: [{ name: 'HomePage' }],
-            })
+    const setAsync = (auth) => {
+        setModal(!modal)
+        setTimeout(() => {
+            AsyncStorage.setItem("MyToken", auth).then(() =>
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'HomePage' }],
+                })
 
 
-        )
+            )
+        }, 1200)
     }
 
 
 
-    const home = () => {
+    const usemodal = () => {
         setModal(!modal)
         setTimeout(() => {
 
