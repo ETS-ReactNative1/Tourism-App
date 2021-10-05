@@ -66,8 +66,8 @@ const Signup = ({ navigation }) => {
 
     const setAsync = (auth) => {
         setModal(!modal)
-        setTimeout(() => {
-            AsyncStorage.setItem("MyToken", auth).then(() =>
+        setTimeout( async () => {
+            await AsyncStorage.setItem("MyToken", auth).then(() =>
                 navigation.reset({
                     index: 0,
                     routes: [{ name: 'HomePage' }],
