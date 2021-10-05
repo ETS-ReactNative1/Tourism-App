@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, ScrollView, Modal } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Flow } from 'react-native-animated-spinkit'
-
-
+import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import './global';
 import global from './global'
 
@@ -33,20 +33,61 @@ const Signup = ({ navigation }) => {
 
     }
 
-    const home = () => {
-        setModal(!modal)
-        setTimeout(() => {
-            navigation.navigate('HomePage')
-            // navigation.reset({
-            //     index: 0,
-            //     routes: [{ name: 'HomePage' }],
-            // })
-    
-        }, 1000)
-        
+    const register = () => {
+        const data = new FormData()
+        data.append('email', email);
+        data.append('username', username);
+        data.append('password', password);
+
+        var config = {
+            method: 'post',
+            url: global.baseUrl + 'registers/',
+            // headers: {
+            //     ...data.getHeaders()
+            // },
+            data: data
+        };
+        console.log(config.url, config.data)
+        axios(config)
+            .then(function (response) {
+                if (response.data.status === 200) {
+                    home()
+                    setAsync(response.data.token)
+
+                } else {
+                    alert('failed to Signup')
+                }
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
 
+
+    const setAsync = async (auth) => {
+        console.log(auth, "okoko")
+        await AsyncStorage.setItem("MyToken", auth).then(() =>
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'HomePage' }],
+            })
+
+
+        )
+    }
+
+
+
+    const home = () => {
+        setModal(!modal)
+        setTimeout(() => {
+
+
+        }, 2000)
+
+    }
 
 
     return (
@@ -57,8 +98,8 @@ const Signup = ({ navigation }) => {
                 <View style={styles.modalContainer}>
                     <View style={{
                         height: 300, width: 300, justifyContent: 'center', alignItems: 'center', justifyContent: 'center',
-                        backgroundColor: 'white', borderRadius: 20, elevation: 6,borderWidth:0.5,borderColor: 'orange'
-                    }}>  
+                        backgroundColor: 'white', borderRadius: 20, elevation: 6, borderWidth: 0.5, borderColor: 'orange'
+                    }}>
                         <Icon style={{ marginVertical: 5 }} name={"account-check-outline"} size={60} color={'green'} />
                         <Text style={{ color: 'green', fontSize: 35, fontFamily: liteFont, textAlign: 'center' }}>Suuceesfully Registered</Text>
                         <View style={{ marginTop: 40 }}>
@@ -87,7 +128,7 @@ const Signup = ({ navigation }) => {
                         <View style={styles.username}>
                             <Icon name={"account"} size={20} color={'orange'} />
                             <TextInput placeholder='Username' style={styles.search}
-                            onChangeText={(e) => setUsername(e)}>
+                                onChangeText={(e) => setUsername(e)}>
                             </TextInput>
                         </View>
                         <View style={styles.password}>
@@ -99,7 +140,7 @@ const Signup = ({ navigation }) => {
                             <Icon name={hidePass ? 'eye-off' : 'eye'} size={20} color={'grey'}
                                 onPress={() => setHidePass(!hidePass)} />
                         </View>
-                        <TouchableOpacity disabled={disabled} style={styles.btn} onPress={() =>home()}>
+                        <TouchableOpacity disabled={disabled} style={styles.btn} onPress={() => register()}>
                             <ImageBackground style={[styles.button, disabled && { ...styles.button, opacity: 0.4 }]} imageStyle={{ height: 50, width: 120, borderRadius: 40 }} source={require('../assets/bb.jpg')}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ color: 'white', fontSize: 18, fontFamily: liteFont, textAlign: 'center' }}>Sign Up</Text>
