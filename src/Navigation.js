@@ -70,10 +70,10 @@ const Navigation = () => {
 
         <Stack.Navigator >
             <Stack.Screen name="Loader" options={{ headerShown: false }} component={LoaderScreen} />
+            <Stack.Screen name="Authcheck" options={{ headerShown: false }} component={AuthcheckScreen} />
             <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginScreen} />
             <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignupScreen} />
             <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomePageScreen} />
-            <Stack.Screen name="Authcheck" options={{ headerShown: false }} component={AuthcheckScreen} />
 
 
 

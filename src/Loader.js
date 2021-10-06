@@ -7,7 +7,7 @@ const Loader = ({ navigation }) => {
     setTimeout(() => {
         navigation.reset({
             index: 0,
-            routes: [{ name: 'Login' }],
+            routes: [{ name: 'Authcheck' }],
         })
 
     }, 1000)
