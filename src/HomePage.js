@@ -2,23 +2,21 @@ import React from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 
 
-const HomePage = () => {
-    return (
-        <View style={styles.container}>
-        <Text>
-            helo
-        </Text>
-        </View>
+import Slider from './slider/Slider'
 
+
+const HomePage = ({ navigation}) => {
+    return (
+        <View>
+            {/* <Slider navigation={navigation} /> */}
+        </View>
     )
 }
 
 export default HomePage
 
 const styles = StyleSheet.create({
-    container: {
 
-    }
 })
 
 

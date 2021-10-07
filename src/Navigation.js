@@ -9,6 +9,7 @@ import LoaderScreen from './Loader';
 import SignupScreen from "./Signup";
 import HomePageScreen from "./HomePage";
 import AuthcheckScreen from "./Authcheck";
+import Slider from './slider/Slider'
 
 
 
@@ -74,6 +75,8 @@ const Navigation = () => {
             <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginScreen} />
             <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignupScreen} />
             <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomePageScreen} />
+            <Stack.Screen name="Slider" options={{ headerShown: false }} component={Slider} />
+
 
 
 
