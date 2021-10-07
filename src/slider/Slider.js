@@ -24,7 +24,6 @@ const Slider = ({ navigation}) => {
                 inactiveDotColor="#90A4AE"
                 sliderBoxHeight={150}
                 paginationBoxVerticalPadding={20}
-                // circleLoop
                 // parentWidth ={200}
                 paginationBoxStyle={{
                     position: "absolute",
@@ -35,7 +34,7 @@ const Slider = ({ navigation}) => {
                     justifyContent: "center",
                     paddingVertical: 10,
                 }}
-                ImageComponentStyle={{ borderRadius: 10, width: '80%', marginTop: 10 }}
+                ImageComponentStyle={{ borderRadius: 10, width: '80%'}}
                 imageLoadingColor="orange"
                 autoplay={true}
                 circleLoop={true}
