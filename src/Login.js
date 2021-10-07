@@ -47,11 +47,12 @@ const Login = ({ navigation }) => {
                 if (response.data.status === 200) {
                     setAsync(response.data.data.token)
                 } else{
-                    console.warn('Invalid')
+                    console.log('Invalid')
                 }
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {
+                alert('Invaid Credentials')
                 console.log(error);
             });
 

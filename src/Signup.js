@@ -58,6 +58,7 @@ const Signup = ({ navigation }) => {
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {
+                alert('User Already Exist')
                 console.log(error);
             });
     }
