@@ -18,7 +18,7 @@ const Slider = ({ navigation}) => {
 
 
     return (
-        <View style={{}}>
+        <View>
             <SliderBox images={image}
                 dotColor="orange"
                 inactiveDotColor="#90A4AE"
