@@ -8,9 +8,23 @@ import Slider from './slider/Slider'
 
 
 const HomePage = ({ navigation }) => {
+
+
+
+    const category = [{id:1,name:'Camping',image:'https://i.pinimg.com/originals/ec/6c/73/ec6c733bbe59569b43e1d034118aa090.jpg'},
+    {id:2,name:'Mountains',image:'https://image.shutterstock.com/image-vector/ice-peak-mountain-green-meadows-260nw-1337286755.jpg'},
+    {id:3,name:'Camping',image:'https://i.pinimg.com/originals/ec/6c/73/ec6c733bbe59569b43e1d034118aa090.jpg'},
+    {id:4,name:'Camping',image:'https://i.pinimg.com/originals/ec/6c/73/ec6c733bbe59569b43e1d034118aa090.jpg'},
+    {id:5,name:'Camping',image:'https://i.pinimg.com/originals/ec/6c/73/ec6c733bbe59569b43e1d034118aa090.jpg'},
+    
+    
+]
+
+
+
     return (
         <View style={styles.container}>
-            <ImageBackground imageStyle={{ borderBottomRightRadius: 70 }} style={styles.imageHotel} source={{ uri: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80' }}>
+            <ImageBackground imageStyle={{ borderBottomRightRadius: 40 }} style={styles.imageHotel} source={{ uri: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80' }}>
                 <View style={styles.imageHotelContent}>
                     <View style={styles.subContainer}>
                         <View style={styles.title}>
@@ -42,11 +56,31 @@ const HomePage = ({ navigation }) => {
                         </View>
                     </View>
                 </View>
-                <View style={styles.bgm}>
+                <ScrollView showsVerticalScrollIndicator={false}>
 
-                </View>
+                    <View style={styles.bgm}>
+                        <View style={styles.titleHead}>
+                            <Text style={{ fontSize: 20, color: 'black', fontFamily: liteFont }}>Categories</Text>
+                            <TouchableOpacity>
+                            <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        <View style ={styles.category}>
+                            {category.map(item => 
+                        <TouchableOpacity activeOpacity={0.8} style={styles.Art} key={item.id}>
+                                <View style={styles.imgContainer}>
+                            <Image style={styles.img} source={{uri:item.image}}/>
+                        </View>
+                        <Text style={{color:'black',fontWeight: 'bold',fontSize:15}}> {item.name}</Text>
+                        </TouchableOpacity>)}
+                        </View>
+                        </ScrollView>
+                    </View>
+                </ScrollView>
             </ImageBackground>
         </View>
+
     )
 }
 
@@ -71,13 +105,13 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
         resizeMode: 'cover',
-        borderBottomRightRadius: 70,
+        borderBottomRightRadius: 40,
     },
     imageHotelContent:
     {
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
         height: 280,
-        borderBottomRightRadius: 70,
+        borderBottomRightRadius: 40,
     },
     searchView: {
         width: '100%',
@@ -96,8 +130,44 @@ const styles = StyleSheet.create({
     },
     bgm: {
         height: '100%',
-        backgroundColor: 'white'
+        backgroundColor: '#fff',
+        padding: '5%'
+    },
+    titleHead: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    img:{
+        flex:1,
+        height:null, 
+        width:null,
+        resizeMode:'cover',
+        overflow: 'hidden',
+        borderRadius:6
+    },
+    imgContainer:{
+        width:60,
+        height:45,
+        flex:1
+    }, 
+    Art:{
+        width:130,
+        height:60,
+        padding:6,
+        borderRadius:10,
+        backgroundColor: '#fff',
+        elevation:3,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginHorizontal:6
+    },
+    category: {
+        flexDirection: 'row',
+        height:100,
+        marginVertical:25
     }
+
 
 })
 
