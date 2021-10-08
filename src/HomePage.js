@@ -7,8 +7,8 @@ import Slider from './slider/Slider'
 
 const HomePage = ({ navigation}) => {
     return (
-        <View>
-            {/* <Slider navigation={navigation} /> */}
+        <View style={styles.container}>
+
         </View>
     )
 }
@@ -16,6 +16,11 @@ const HomePage = ({ navigation}) => {
 export default HomePage
 
 const styles = StyleSheet.create({
+    container: {
+        height:'100%',
+        width:'100%',
+        backgroundColor:'#f1f5f9'
+    },
 
 })
 
