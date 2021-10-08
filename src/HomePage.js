@@ -17,14 +17,14 @@ const HomePage = ({ navigation}) => {
                 <Text style={{fontSize:24,fontFamily:liteFont,color:'white'}}>Hi</Text>
                 <Text style={{ fontSize: 22, fontFamily: baseFont,color:'orange',marginLeft:6}}>Faheem,</Text>
                 <View style={{paddingLeft:190,alignItems: 'center'}}>
-                <Icon name={"bell-ring"} size={26} color={'orange'} />
+                <Icon name={"bell-ring"} size={30} color={'orange'} />
                 </View>
 
             </View>
             <View style={{flexDirection: 'row',alignItems: 'center',}}>
-            <Text style={{ fontSize: 24, fontFamily: liteFont,color:'white'}}>Where do u want to</Text>
-            <Text  style={{ fontSize: 24, fontFamily: liteFont,color:'orange',marginLeft:6}}>go </Text>
-            <Text style={{  fontSize: 25, fontFamily: liteFont,color:'#fff'}}>?</Text>
+            <Text style={{ fontSize: 24,color:'white'}}>𝐰𝐡𝐞𝐫𝐞 𝐝𝐨 𝐮 𝐰𝐚𝐧𝐭 𝐭𝐨  </Text>
+            <Text  style={{ fontSize: 26, fontFamily: liteFont,color:'orange',marginLeft:6}}>ɠơ </Text>
+            <Text style={{  fontSize: 25, fontFamily: liteFont,color:'#fff'}}>?̾</Text>
             </View>
             <TouchableOpacity style={styles.searchView} activeOpacity={0.7}>
             <Icon name={"magnify"} size={22} color={'orange'} />
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     imageHotel: {
-        height: 250,
+        height: 280,
         width: '100%',
         flex: 1,
         resizeMode: 'cover',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     imageHotelContent:
     {
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
-        height: 250,
+        height: 280,
         borderBottomRightRadius: 70,
     },
     searchView:{
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(52, 52, 52, 0.6)',
         padding:12,
         borderRadius:12,
-        marginVertical:25,
+        marginVertical:35,
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        margin:10
     }
 
 })
