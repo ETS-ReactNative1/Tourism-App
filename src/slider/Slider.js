@@ -34,7 +34,6 @@ const Slider = ({ navigation}) => {
                     justifyContent: "center",
                     paddingVertical: 10,
                 }}
-                ImageComponentStyle={{ borderRadius: 10, width: '80%'}}
                 imageLoadingColor="orange"
                 autoplay={true}
                 circleLoop={true}
