@@ -60,7 +60,7 @@ const HomePage = ({ navigation }) => {
                     <View>
                         <View style={styles.bgm}>
                             <View style={styles.titleHead}>
-                                <Text style={{ fontSize: 20, color: 'black', fontFamily: liteFont }}>Categories</Text>
+                                <Text style={{ fontSize: 20, color: 'black', fontFamily: boldFont }}>Categories</Text>
                                 <TouchableOpacity>
                                     <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
                                 </TouchableOpacity>
@@ -78,7 +78,7 @@ const HomePage = ({ navigation }) => {
                             </ScrollView>
                             <View style={styles.places}>
                                 <View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'space-between'}}>
-                                <Text style={{ fontSize: 20, color: 'black', fontFamily: liteFont }}>Hot Places</Text>
+                                <Text style={{ fontSize: 20, color: 'black', fontFamily: boldFont }}>Kerala Districts</Text>
                                 <TouchableOpacity>
                                     <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
                                 </TouchableOpacity>
@@ -86,6 +86,7 @@ const HomePage = ({ navigation }) => {
                                 <View style={styles.slider}>
                                 <Slider navigation={navigation}/>
                                 </View>
+                                <Text>dugfue</Text>
                             </View>
                         </View>
                     </View>
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
         marginVertical: 25
     },
     places: {
-        
+        marginVertical: 10,
     },
     slider: {
         marginVertical: 20,

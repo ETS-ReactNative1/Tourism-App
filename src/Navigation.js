@@ -9,6 +9,8 @@ import LoaderScreen from './Loader';
 import SignupScreen from "./Signup";
 import HomePageScreen from "./HomePage";
 import AuthcheckScreen from "./Authcheck";
+import ProfileScreen from "./Profile";
+
 import Slider from './slider/Slider'
 
 
@@ -17,28 +19,28 @@ import Slider from './slider/Slider'
 
 // const Tab1 = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
-// const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 
 
-// const HomeTabs = () => {
-//     return (
-//         <Tab.Navigator screenOptions={{ headerShown: false }} tabBarOptions={{ showLabel: false }}>
-//             <Tab.Screen name="Category" options={{
-//                 tabBarIcon: ({ focused, color }) => (
-//                     <Icon name="home" color={focused ? 'green' : color} size={25} />
-//                 ),
-//             }} component={CategoryPageScreen} />
-//             <Tab.Screen name="Profile" options={{
-//                 tabBarIcon: ({ focused, color }) => (
-//                     <Icon name="account-circle" color={focused ? 'green' : color} size={25} />
-//                 ),
-//             }} component={ProfileScreen} />
+const HomeTabs = () => {
+    return (
+        <Tab.Navigator screenOptions={{ headerShown: false ,tabBarStyle: { borderRadius:10,height:52,elevation:1},}} tabBarOptions={{ showLabel: false }}>
+            <Tab.Screen name="Category" options={{
+                tabBarIcon: ({ focused, color }) => (
+                    <Icon name="home-outline" color={focused ? '#f18100' : color} size={30} />
+                ),
+            }} component={HomePageScreen} />
+            <Tab.Screen name="Profile" options={{
+                tabBarIcon: ({ focused, color }) => (
+                    <Icon name="account-outline" color={focused ? '#f18100' : color} size={30} />
+                ),
+            }} component={ProfileScreen} />
 
 
-//         </Tab.Navigator>
-//     )
-// }
+        </Tab.Navigator>
+    )
+}
 
 
 
@@ -74,8 +76,10 @@ const Navigation = () => {
             <Stack.Screen name="Authcheck" options={{ headerShown: false }} component={AuthcheckScreen} />
             <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginScreen} />
             <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignupScreen} />
-            <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomePageScreen} />
+            <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomeTabs} />
             <Stack.Screen name="Slider" options={{ headerShown: false }} component={Slider} />
+            <Stack.Screen name="Profile" options={{ headerShown: false }} component={ProfileScreen} />
+
 
 
 
