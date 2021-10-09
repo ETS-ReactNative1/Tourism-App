@@ -7,9 +7,10 @@ const Slider = ({ navigation}) => {
 
     const [image, setImage] = useState(
         [
-            "https://source.unsplash.com/1024x768/?nature",
-            "https://source.unsplash.com/1024x768/?water",
-            "https://source.unsplash.com/1024x768/?girl",
+            "https://keralatourpackagesguide.com/wp-content/uploads/2017/03/places-trivandrum.jpg",
+            "https://keralatourpackagesguide.com/wp-content/uploads/2017/03/places-kollam.jpg",
+            "https://raw.githubusercontent.com/sumitc91/sumitc91.github.io/master/Blogs/7967f785-010d-499f-83a2-ad395cf59514_Pathanamthitta-tourism.jpg",
+            "https://keralatourpackagesguide.com/wp-content/uploads/2017/03/places-alappuzha.jpg",
             "https://source.unsplash.com/1024x768/?tree",
             "https://source.unsplash.com/1024x768/?tree",
 
