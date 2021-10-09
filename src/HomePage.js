@@ -31,7 +31,7 @@ const HomePage = ({ navigation }) => {
                             <View style={styles.title}>
                                 <Text style={{ fontSize: 24, fontFamily: liteFont, color: 'white' }}>Hi</Text>
                                 <Text style={{ fontSize: 22, fontFamily: baseFont, color: 'orange', marginLeft: 6 }}>Faheem,</Text>
-                                <View style={{ paddingLeft: 190, alignItems: 'center' }}>
+                                <View style={{ paddingLeft: 180, alignItems: 'center' }}>
                                     <Icon name={"bell-ring"} size={30} color={'orange'} />
                                 </View>
 
@@ -42,29 +42,19 @@ const HomePage = ({ navigation }) => {
                                 <Text style={{ fontSize: 25, fontFamily: liteFont, color: '#fff' }}>?̾</Text>
                             </View>
                             <TouchableOpacity style={styles.searchView} activeOpacity={0.7}>
-                                <Icon name={"magnify"} size={22} color={'orange'} />
-                                <Text style={{ color: '#f1f5f9', fontFamily: baseFont, fontSize: 16, paddingLeft: 5 }}>Search Places..</Text>
-
+                                <Icon name={"magnify"} size={24} color={'orange'} />
+                                <Text style={{ color: '#f1f5f9', fontFamily:baseFont, fontSize: 15, paddingLeft: 5 }}>Search Places..</Text>
                             </TouchableOpacity>
-                            <View style={styles.description}>
-                                <Icon name={"walk"} size={12} color={'white'} />
-                                <Icon name={"bike"} size={15} color={'orange'} />
-                                <Icon name={"car-hatchback"} size={22} color={'white'} />
-                                <Icon name={"bus-side"} size={24} color={'orange'} />
-                                <Icon name={"train"} size={28} color={'white'} />
-                                <Icon name={"sail-boat"} size={32} color={'orange'} />
-                                <Icon name={"airplane-takeoff"} size={34} color={'white'} />
-                            </View>
                         </View>
                     </View>
                     <View>
-                        <View style={styles.bgm}>
-                            <View style={styles.titleHead}>
+                        <View style={styles.titleHead}>
                                 <Text style={{ fontSize: 20, color: 'black', fontFamily: boldFont }}>Categories</Text>
                                 <TouchableOpacity>
                                     <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
                                 </TouchableOpacity>
                             </View>
+                        <View style={styles.cat}>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                 <View style={styles.category}>
                                     {category.map(item =>
@@ -76,6 +66,8 @@ const HomePage = ({ navigation }) => {
                                         </TouchableOpacity>)}
                                 </View>
                             </ScrollView>
+                        </View>
+                        <View style={styles.bgm}>
                             <View style={styles.places}>
                                 <View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'space-between'}}>
                                 <Text style={{ fontSize: 20, color: 'black', fontFamily: boldFont }}>Kerala Districts</Text>
@@ -120,7 +112,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     imageHotel: {
-        height: 280,
+        height: 240,
         width: '100%',
         flex: 1,
         resizeMode: 'cover',
@@ -129,15 +121,15 @@ const styles = StyleSheet.create({
     imageHotelContent:
     {
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
-        height: 280,
+        height: 240,
         borderBottomRightRadius: 40,
     },
     searchView: {
         width: '100%',
         backgroundColor: 'rgba(52, 52, 52, 0.6)',
-        padding: 12,
-        borderRadius: 12,
-        marginVertical: 35,
+        padding: 8,
+        borderRadius: 30,
+        marginVertical:35,
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -156,7 +148,8 @@ const styles = StyleSheet.create({
     titleHead: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: '5%'
     },
     img: {
         flex: 1,
@@ -185,13 +178,17 @@ const styles = StyleSheet.create({
     category: {
         flexDirection: 'row',
         // height: 100,
-        marginVertical: 25
+        marginVertical: 10
     },
     places: {
         marginVertical: 10,
     },
     slider: {
         marginVertical: 20,
+    },
+    cat:{
+        paddingLeft: '5%'
+
     }
 
 
