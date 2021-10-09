@@ -24,11 +24,11 @@ const Slider = ({ navigation}) => {
                 inactiveDotColor="#90A4AE"
                 sliderBoxHeight={150}
                 paginationBoxVerticalPadding={20}
-                // parentWidth ={200}
+                parentWidth ={324}
                 paginationBoxStyle={{
                     position: "absolute",
-                    bottom: 0,
-                    padding: 0,
+                    // bottom: 0,
+                    // padding: 10,
                     alignItems: "center",
                     alignSelf: "center",
                     justifyContent: "center",
@@ -37,6 +37,10 @@ const Slider = ({ navigation}) => {
                 imageLoadingColor="orange"
                 autoplay={true}
                 circleLoop={true}
+                borderBottomLeftRadius={30}
+                borderTopRightRadius={30}
+                borderTopLeftRadius={10}
+                borderBottomRightRadius={10}
             />
         </View>
     )

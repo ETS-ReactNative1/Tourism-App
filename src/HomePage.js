@@ -58,36 +58,42 @@ const HomePage = ({ navigation }) => {
                         </View>
                     </View>
                     <View>
-                    <View style={styles.bgm}>
-                        <View style={styles.titleHead}>
-                            <Text style={{ fontSize: 20, color: 'black', fontFamily: liteFont }}>Categories</Text>
-                            <TouchableOpacity>
-                                <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <View style={styles.category}>
-                                {category.map(item =>
-                                    <TouchableOpacity activeOpacity={0.8} style={styles.Art} key={item.id}>
-                                        <View style={styles.imgContainer}>
-                                            <Image style={styles.img} source={{ uri: item.image }} />
-                                        </View>
-                                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15 }}> {item.name}</Text>
-                                    </TouchableOpacity>)}
+                        <View style={styles.bgm}>
+                            <View style={styles.titleHead}>
+                                <Text style={{ fontSize: 20, color: 'black', fontFamily: liteFont }}>Categories</Text>
+                                <TouchableOpacity>
+                                    <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
+                                </TouchableOpacity>
                             </View>
-                        </ScrollView>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                <View style={styles.category}>
+                                    {category.map(item =>
+                                        <TouchableOpacity activeOpacity={0.8} style={styles.Art} key={item.id}>
+                                            <View style={styles.imgContainer}>
+                                                <Image style={styles.img} source={{ uri: item.image }} />
+                                            </View>
+                                            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15 }}> {item.name}</Text>
+                                        </TouchableOpacity>)}
+                                </View>
+                            </ScrollView>
+                            <View style={styles.places}>
+                                <View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'space-between'}}>
+                                <Text style={{ fontSize: 20, color: 'black', fontFamily: liteFont }}>Hot Places</Text>
+                                <TouchableOpacity>
+                                    <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
+                                </TouchableOpacity>
+                                </View>
+                                <View style={styles.slider}>
+                                <Slider navigation={navigation}/>
+                                </View>
+                            </View>
+                        </View>
                     </View>
-                    <View style={{paddingHorizontal:'5%'}}>
-                        <Text>dhihd</Text>
-                        <Text>dhihd</Text>
-                    </View>
-                    
-                    </View>
-                    </ScrollView>
+                </ScrollView>
             </ImageBackground>
-            
 
-            </View>
+
+        </View>
 
 
     )
@@ -96,7 +102,7 @@ const HomePage = ({ navigation }) => {
 export default HomePage
 
 const styles = StyleSheet.create({
-    main:{
+    main: {
         height: '100%',
     },
     container: {
@@ -143,7 +149,8 @@ const styles = StyleSheet.create({
     bgm: {
         backgroundColor: '#fff',
         padding: '5%',
-        height: 150,
+        // height: 160,
+        justifyContent: 'center'
     },
     titleHead: {
         flexDirection: 'row',
@@ -178,6 +185,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // height: 100,
         marginVertical: 25
+    },
+    places: {
+        
+    },
+    slider: {
+        marginVertical: 20,
     }
 
 
