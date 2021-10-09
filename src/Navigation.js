@@ -53,7 +53,7 @@ const HomeTabs = () => {
             }} component={CategoryScreen} />
             <Tab.Screen name="Profile" options={{
                 tabBarIcon: ({ focused, color }) => (
-                    <Icon name="account-outline" color={focused ? '#f18100' : color} size={28} />
+                    <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
                 ),
             }} component={ProfileScreen} />
 
