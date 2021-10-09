@@ -10,6 +10,10 @@ import SignupScreen from "./Signup";
 import HomePageScreen from "./HomePage";
 import AuthcheckScreen from "./Authcheck";
 import ProfileScreen from "./Profile";
+import CategoryScreen from "./Category";
+import PlacesScreen from "./Places";
+
+
 
 import Slider from './slider/Slider'
 
@@ -25,22 +29,40 @@ const Tab = createBottomTabNavigator();
 
 const HomeTabs = () => {
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false ,tabBarStyle: { borderRadius:10,height:52,elevation:1},}} tabBarOptions={{ showLabel: false }}>
-            <Tab.Screen name="Category" options={{
+        <Tab.Navigator screenOptions={{
+            headerShown: false, tabBarStyle: {
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20, height: 60, elevation: 1,
+                backgroundColor: 'black', alignItems: 'center'
+            },
+        }} tabBarOptions={{ showLabel: false }}>
+            <Tab.Screen name="Home" options={{
                 tabBarIcon: ({ focused, color }) => (
-                    <Icon name="home-outline" color={focused ? '#f18100' : color} size={30} />
+                    <Icon name="home-circle" color={focused ? '#f18100' : color} size={28} />
                 ),
             }} component={HomePageScreen} />
+            <Tab.Screen name="Places" options={{
+                tabBarIcon: ({ focused, color }) => (
+                    <Icon name="map-marker-radius" color={focused ? '#f18100' : color} size={28} />
+                ),
+            }} component={PlacesScreen} />
+            <Tab.Screen name="Category" options={{
+                tabBarIcon: ({ focused, color }) => (
+                    <Icon name="palm-tree" color={focused ? '#f18100' : color} size={28} />
+                ),
+            }} component={CategoryScreen} />
             <Tab.Screen name="Profile" options={{
                 tabBarIcon: ({ focused, color }) => (
-                    <Icon name="account-outline" color={focused ? '#f18100' : color} size={30} />
+                    <Icon name="account-outline" color={focused ? '#f18100' : color} size={28} />
                 ),
             }} component={ProfileScreen} />
+
 
 
         </Tab.Navigator>
     )
 }
+
 
 
 
@@ -79,6 +101,10 @@ const Navigation = () => {
             <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomeTabs} />
             <Stack.Screen name="Slider" options={{ headerShown: false }} component={Slider} />
             <Stack.Screen name="Profile" options={{ headerShown: false }} component={ProfileScreen} />
+            <Stack.Screen name="Category" options={{ headerShown: false }} component={CategoryScreen} />
+            <Stack.Screen name="Places" options={{ headerShown: false }} component={PlacesScreen} />
+
+
 
 
 
