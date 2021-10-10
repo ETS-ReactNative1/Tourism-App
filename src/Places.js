@@ -22,7 +22,7 @@ export const Places = () => {
         },
     ];
 
-    const [visible, setIsVisible] = useState(true);
+    const [visible, setIsVisible] = useState(false);
 
     return (
         <View style={{ height: '100%' }}>
