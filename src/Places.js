@@ -6,9 +6,10 @@ import ImageView from "react-native-image-viewing";
 
 
 export const Places = () => {
-    useEffect(() => {
-        LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-    }, [])
+    // useEffect(() => {
+    //     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+    // }, [])
+
     const images = [
         {   id: 1,
             uri: "https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg'",
