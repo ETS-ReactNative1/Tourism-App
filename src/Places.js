@@ -18,9 +18,6 @@ export const Places = () => {
             id:2,
             uri: "https://images.unsplash.com/photo-1571501679680-de32f1e7aad4",
         },
-        {   id:3,
-            uri: "https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg'",
-        },
     ];
 
     const [visible, setIsVisible] = useState(false);
