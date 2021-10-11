@@ -21,6 +21,14 @@ const HomePage = ({ navigation }) => {
     ]
 
 
+    const reels = [{
+        id: 1, name: 'Malappuram,Kotakkkunnu', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4'},
+        {id: 2, name: 'Thiruvanatham,Kool', place: 'Palakkad',image: 'https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg'},
+        {id: 3, name: 'Malappuram,Kotaddk', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4'},
+
+    ]
+
+
 
     return (
         <View style={styles.container}>
@@ -43,44 +51,75 @@ const HomePage = ({ navigation }) => {
                             </View>
                             <TouchableOpacity style={styles.searchView} activeOpacity={0.7}>
                                 <Icon name={"magnify"} size={24} color={'orange'} />
-                                <Text style={{ color: '#f1f5f9', fontFamily:baseFont, fontSize: 15, paddingLeft: 5 }}>Search Places..</Text>
+                                <Text style={{ color: '#f1f5f9', fontFamily: baseFont, fontSize: 15, paddingLeft: 5 }}>Search Places..</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View>
-                        <View style={styles.titleHead}>
-                                <Text style={{ fontSize: 20, color: 'black', fontFamily: boldFont }}>Categories</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
-                                </TouchableOpacity>
+                    <View style={styles.titleHead}>
+                        <Text style={{ fontSize: 20, color: 'black', fontFamily: boldFont }}>Categories</Text>
+                        <TouchableOpacity>
+                            <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.cat}>
+                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                            <View style={styles.category}>
+                                {category.map(item =>
+                                    <TouchableOpacity activeOpacity={0.8} style={styles.Art} key={item.id}>
+                                        <View style={styles.imgContainer}>
+                                            <Image style={styles.img} source={{ uri: item.image }} />
+                                        </View>
+                                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15 }}> {item.name}</Text>
+                                    </TouchableOpacity>)}
                             </View>
-                        <View style={styles.cat}>
-                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                <View style={styles.category}>
-                                    {category.map(item =>
-                                        <TouchableOpacity activeOpacity={0.8} style={styles.Art} key={item.id}>
-                                            <View style={styles.imgContainer}>
-                                                <Image style={styles.img} source={{ uri: item.image }} />
-                                            </View>
-                                            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15 }}> {item.name}</Text>
-                                        </TouchableOpacity>)}
-                                </View>
-                            </ScrollView>
-                        </View>
-                        <View style={styles.bgm}>
-                            <View style={styles.places}>
-                                <View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'space-between'}}>
+                        </ScrollView>
+                    </View>
+                    <View style={styles.bgm}>
+                        <View style={styles.places}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Text style={{ fontSize: 20, color: 'black', fontFamily: boldFont }}>Kerala Districts</Text>
                                 <TouchableOpacity>
                                     <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>See All</Text>
                                 </TouchableOpacity>
-                                </View>
-                                <View style={styles.slider}>
-                                <Slider navigation={navigation}/>
-                                </View>
-                                <Text>dugfue</Text>
+                            </View>
+                            <View style={styles.slider}>
+                                <Slider navigation={navigation} />
+                            </View>
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={{ fontSize: 22, color: 'black', fontFamily: boldFont }}>Discover</Text>
                             </View>
                         </View>
+                    </View>
+                    <View style={{ paddingLeft: 10 }}>
+                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                            <View style={styles.reels}>
+                                
+                                {reels.map(item =>
+                                <View style={{ marginHorizontal: 6 }} key={item.id}>
+                                    <ImageBackground style={styles.reelimg} imageStyle={{ height: 240, width: 160, borderRadius: 12 }} style={styles.img2} source={{ uri: item.image }}>
+                                        <View style={styles.inside}>
+                                            <View style={styles.head}>
+                                                <Text style={{ color: '#fff', fontFamily: liteFont, fontSize: 15 }}>{item.name}</Text>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 6 }}>
+                                                    <Icon name={"map-marker"} size={18} color={'orange'} />
+                                                    <Text style={{ fontSize: 12, color: '#fff', fontFamily: baseFont }}>{item.place}</Text>
+                                                </View>
+
+                                            </View>
+
+                                        </View>
+
+                                    </ImageBackground>
+                                </View>)}
+                                
+
+                            </View>
+                        </ScrollView>
+                        <Text>eusdg</Text>
+                        <Text>eusdg</Text>
+                        <Text>eusdg</Text>
+                        <Text>eusdg</Text>
+
                     </View>
                 </ScrollView>
             </ImageBackground>
@@ -129,7 +168,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(52, 52, 52, 0.6)',
         padding: 8,
         borderRadius: 30,
-        marginVertical:35,
+        marginVertical: 35,
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -185,9 +224,30 @@ const styles = StyleSheet.create({
     },
     slider: {
         marginVertical: 20,
+        marginBottom: 10
     },
-    cat:{
+    cat: {
         paddingLeft: '5%'
+
+    },
+    inside: {
+        flex: 1,
+        backgroundColor: 'rgba(52, 52, 52, 0.4)',
+        width: 160,
+        borderRadius: 12,
+        padding: 10,
+        // alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
+    img2: {
+        height: 240,
+        width: '100%',
+        flex: 1,
+        resizeMode: 'cover',
+    },
+    reels: {
+        flexDirection: 'row',
+
 
     }
 
