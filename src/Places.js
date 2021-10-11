@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, TouchableOpacity, Modal } from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
 import { LogBox } from 'react-native';
 
 import ImageView from "react-native-image-viewing";
