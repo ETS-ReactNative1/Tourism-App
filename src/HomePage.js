@@ -22,9 +22,10 @@ const HomePage = ({ navigation }) => {
 
 
     const reels = [{
-        id: 1, name: 'Malappuram,Kotakkkunnu', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4'},
-        {id: 2, name: 'Thiruvanatham,Kool', place: 'Palakkad',image: 'https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg'},
-        {id: 3, name: 'Malappuram,Kotaddk', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4'},
+        id: 1, name: 'Malappuram,Kotakkkunnu', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4'
+    },
+    { id: 2, name: 'Thiruvanatham,Kool', place: 'Palakkad', image: 'https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg' },
+    { id: 3, name: 'Malappuram,Kotaddk', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4' },
 
     ]
 
@@ -93,25 +94,25 @@ const HomePage = ({ navigation }) => {
                     <View style={{ paddingLeft: 10 }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <View style={styles.reels}>
-                                
+
                                 {reels.map(item =>
-                                <View style={{ marginHorizontal: 6 }} key={item.id}>
-                                    <ImageBackground style={styles.reelimg} imageStyle={{ height: 240, width: 160, borderRadius: 12 }} style={styles.img2} source={{ uri: item.image }}>
-                                        <View style={styles.inside}>
-                                            <View style={styles.head}>
-                                                <Text style={{ color: '#fff', fontFamily: liteFont, fontSize: 15 }}>{item.name}</Text>
-                                                <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 6 }}>
-                                                    <Icon name={"map-marker"} size={18} color={'orange'} />
-                                                    <Text style={{ fontSize: 12, color: '#fff', fontFamily: baseFont }}>{item.place}</Text>
+                                    <View style={{ marginHorizontal: 6 }} key={item.id}>
+                                        <ImageBackground style={styles.reelimg} imageStyle={{ height: 240, width: 160, borderRadius: 12 }} style={styles.img2} source={{ uri: item.image }}>
+                                            <View style={styles.inside}>
+                                                <View style={styles.head}>
+                                                    <Text style={{ color: '#fff', fontFamily: liteFont, fontSize: 15 }}>{item.name}</Text>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 6 }}>
+                                                        <Icon name={"map-marker"} size={18} color={'orange'} />
+                                                        <Text style={{ fontSize: 12, color: '#fff', fontFamily: baseFont }}>{item.place}</Text>
+                                                    </View>
+
                                                 </View>
 
                                             </View>
 
-                                        </View>
+                                        </ImageBackground>
+                                    </View>)}
 
-                                    </ImageBackground>
-                                </View>)}
-                                
 
                             </View>
                         </ScrollView>
