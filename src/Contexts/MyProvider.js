@@ -26,7 +26,7 @@ class MyProvider extends Component {
 
 
     filterList = (lis) => {
-        return lis.filter(listItem => listItem.name.toLowerCase().includes(this.state.search.toLowerCase()));
+        return lis.filter(listItem => listItem.place.toLowerCase().includes(this.state.search.toLowerCase()));
 
     }
 

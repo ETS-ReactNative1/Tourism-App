@@ -21,7 +21,7 @@ const Category = ({ navigation }) => {
         { id: 1, name: 'Burger' },
         { id: 2, name: 'f' },
         { id: 3, name: 'Keito Die' },
-        { id: 4, name: 'Pizza' },
+        { id: 4, name: 'kan' },
         { id: 5, name: 'Pizzaddd' },
         { id: 6, name: 'Ch Biriyaani' },
         { id: 7, name: 'KFC' },
