@@ -50,7 +50,8 @@ const HomePage = ({ navigation }) => {
                                 <Text style={{ fontSize: 26, fontFamily: liteFont, color: 'orange', marginLeft: 6 }}>ɠơ </Text>
                                 <Text style={{ fontSize: 25, fontFamily: liteFont, color: '#fff' }}>?̾</Text>
                             </View>
-                            <TouchableOpacity style={styles.searchView} activeOpacity={0.7}>
+                            <TouchableOpacity style={styles.searchView} activeOpacity={0.7}
+                            onPress={() => navigation.navigate('Category')}>
                                 <Icon name={"magnify"} size={24} color={'orange'} />
                                 <Text style={{ color: '#f1f5f9', fontFamily: baseFont, fontSize: 15, paddingLeft: 5 }}>Search Places..</Text>
                             </TouchableOpacity>

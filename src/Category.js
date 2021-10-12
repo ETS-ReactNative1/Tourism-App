@@ -1,12 +1,20 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from "react-native";
+import React, { useState, useEffect,useContext } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ActivityIndicator } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import '../global';
+
+
+import List from './List'
+import MyContext from './Contexts/Context'
+
 
 
 
 
 const Category = ({ navigation }) => {
+    const context = useContext(MyContext)
+
+
 
 
     const list = [
@@ -32,22 +40,23 @@ const Category = ({ navigation }) => {
     const [page, setPage] = useState(true)
     const [searchField, setsearchField] = useState(null)
     const [close, setClose] = useState(false)
-    const [search, setSearch] = useState('')
+    // const [search, setSearch] = useState('')
+    const [loading, setLoading] = useState(true)
 
-    const filterList = (lis) => {
-        return lis.filter(listItem => listItem.name.toLowerCase().includes(search.toLowerCase()));
+    // const filterList = (lis) => {
+    //     return lis.filter(listItem => listItem.name.toLowerCase().includes(search.toLowerCase()));
 
-    }
-    const lis = [{ name: 'The Weeknd' },
-    { name: 'Drake' }, { name: 'Roddy Ricch' },
-    { name: 'faeem', phone: 756 }];
+    // }
+    // const lis = [{ name: 'The Weeknd' },
+    // { name: 'Drake' }, { name: 'Roddy Ricch' },
+    // { name: 'faeem', phone: 756 }];
 
 
 
 
     //check search text length for changing pages
     const handleChange = (e) => {
-        setSearch(e)
+        context.setItem(e)
         setsearchField(e)
         if (e !== null) {
             if (e.length >= 1) {
@@ -119,14 +128,7 @@ const Category = ({ navigation }) => {
                                     </View>
                                 </View>
                             </TouchableOpacity>)}
-                    </View> : <View>
-                        {filterList(lis).map((list, index) => (
-                            <TouchableOpacity style={{ backgroundColor: 'yellow', width: '100%' }} onPress={() => navigation.navigate('Places')}>
-                                <Text>{list.phone}</Text>
-                                <Text key={index} style={styles.itemText}>{list.name}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>}
+                    </View> : <List navigation={navigation} />}
             </ScrollView>
         </View>
     )
