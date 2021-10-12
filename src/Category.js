@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ActivityIndicator } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import '../global';
@@ -12,7 +12,12 @@ import MyContext from './Contexts/Context'
 
 
 const Category = ({ navigation }) => {
+
     const context = useContext(MyContext)
+    const searchInputRef = React.useRef(null);
+    useEffect(() => {
+        searchInputRef.current.focus();
+    }, []);
 
 
 
@@ -98,7 +103,7 @@ const Category = ({ navigation }) => {
                         <View style={styles.searchContainer}>
                             <View style={styles.searchBar}>
                                 <Icon name={"magnify"} size={22} color={'grey'} />
-                                <TextInput value={searchField} autoFocus={true} placeholder='Search food or reastuarents' style={styles.search}
+                                <TextInput value={searchField} ref={searchInputRef} autoFocus={false} placeholder='Search food or reastuarents' style={styles.search}
                                     onChangeText={(e) => handleChange(e)}>
                                 </TextInput>
                                 <TouchableOpacity onPress={(clear) => handleClear(clear)}>
