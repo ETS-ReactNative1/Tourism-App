@@ -16,6 +16,7 @@ import PlacesScreen from "./Places";
 
 
 
+
 import Slider from './slider/Slider'
 
 
@@ -104,6 +105,7 @@ const Navigation = () => {
             <Stack.Screen name="Profile" options={{ headerShown: false }} component={ProfileScreen} />
             <Stack.Screen name="Category" options={{ headerShown: false }} component={CategoryScreen} />
             <Stack.Screen name="Places" options={{ headerShown: false }} component={PlacesScreen} />
+
 
 
 
