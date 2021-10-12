@@ -2,15 +2,17 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './src/Navigation'
 
+import MyProvider from './src/Contexts/MyProvider'
 
 const App = () => {
   return (
 
 
-
-    <NavigationContainer>
-      <Navigation />
-    </NavigationContainer>
+    <MyProvider>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </MyProvider>
 
   );
 };

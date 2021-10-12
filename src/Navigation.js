@@ -12,6 +12,8 @@ import AuthcheckScreen from "./Authcheck";
 import ProfileScreen from "./Profile";
 import CategoryScreen from "./Category";
 import PlacesScreen from "./Places";
+import ListScreen from "./List";
+
 
 
 
@@ -48,11 +50,11 @@ const HomeTabs = () => {
                     <Icon name="map-marker-radius" color={focused ? '#f18100' : color} size={28} />
                 ),
             }} component={PlacesScreen} />
-            <Tab.Screen name="Category" options={{
+            <Tab.Screen name="List" options={{
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="palm-tree" color={focused ? '#f18100' : color} size={28} />
                 ),
-            }} component={CategoryScreen} />
+            }} component={ListScreen} />
             <Tab.Screen name="Profile" options={{
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
@@ -105,6 +107,8 @@ const Navigation = () => {
             <Stack.Screen name="Profile" options={{ headerShown: false }} component={ProfileScreen} />
             <Stack.Screen name="Category" options={{ headerShown: false }} component={CategoryScreen} />
             <Stack.Screen name="Places" options={{ headerShown: false }} component={PlacesScreen} />
+            <Stack.Screen name="List" options={{ headerShown: false }} component={ListScreen} />
+
 
 
 
