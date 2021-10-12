@@ -11,7 +11,7 @@ const Category = () => {
     }
     const lis = [{ name: 'The Weeknd' },
     { name: 'Drake' }, { name: 'Roddy Ricch' },
-    { name: 'faeem' }];
+    { name: 'faeem', phone:756 }];
 
 
     return (
@@ -21,7 +21,10 @@ const Category = () => {
                 style={styles.searchBar}
             />
             {filterList(lis).map((list, index) => (
-                <Text key={index} style={styles.itemText}>{list.name}</Text>
+                <View style={{backgroundColor:'yellow',width:'100%'}}>
+                    <Text>{list.phone}</Text>
+                    <Text key={index} style={styles.itemText}>{list.name}</Text>
+                </View>
             ))}
         </View>
     )
@@ -51,6 +54,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         backgroundColor: 'blue',
         width: '100%',
-        height: 50
+        height: 50,
     }
 });
