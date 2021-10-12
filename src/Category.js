@@ -65,7 +65,7 @@ const Category = ({ navigation }) => {
                 setClose(false)
             }
             console.log('close icon enable')
-            if (e.length >= 1) {
+            if (e.length >= 2) {
                 console.log('show restuarent page')
                 setPage(false)
             } else {

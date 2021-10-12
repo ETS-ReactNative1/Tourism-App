@@ -21,7 +21,7 @@ class MyProvider extends Component {
         this.setState({ loading: true })
         setTimeout(() => {
             this.setState({ loading: false })
-        }, 60);
+        }, 200);
     };
 
 

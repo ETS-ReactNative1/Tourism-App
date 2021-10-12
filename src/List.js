@@ -19,6 +19,7 @@ const List = ({ navigation}) => {
 
     const lis = [{ name: 'The Weeknd' },
     { name: 'Drake' }, { name: 'Roddy Ricch' },
+    { name: 'Babu' },
     { name: 'faeem', phone: 756 }];
 
 
