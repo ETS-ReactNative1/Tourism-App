@@ -5,11 +5,13 @@ const Category = () => {
 
     const [search, setSearch] = useState('')
 
-    const filterList = (list) => {
-        return list.filter(listItem => listItem.toLowerCase().includes(search.toLowerCase()));
+    const filterList = (lis) => {
+        return lis.filter(listItem => listItem.name.toLowerCase().includes(search.toLowerCase()));
 
     }
-    const list = ['The Weeknd', 'Drake', 'Roddy Ricch', 'Dua Lipa','faheem'];
+    const lis = [{ name: 'The Weeknd' },
+    { name: 'Drake' }, { name: 'Roddy Ricch' },
+    { name: 'faeem' }];
 
 
     return (
@@ -18,9 +20,9 @@ const Category = () => {
                 onChangeText={(search) => setSearch(search)}
                 style={styles.searchBar}
             />
-            {filterList(list).map((list, index) => (
-                    <Text key={index} style={styles.itemText}>{list}</Text>
-                ))}
+            {filterList(lis).map((list, index) => (
+                <Text key={index} style={styles.itemText}>{list.name}</Text>
+            ))}
         </View>
     )
 
