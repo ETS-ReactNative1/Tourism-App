@@ -8,15 +8,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 class MyProvider extends Component {
     state = {
         search: null,
-        progress: null,
-        search: null,
+        loading: true,
     };
 
 
 
     setItem = (e) => {
-        this.setState({search: e})
+        this.setState({ search: e })
     }
+
+    setLoading = () => {
+        this.setState({ loading: true })
+        setTimeout(() => {
+            this.setState({ loading: false })
+        }, 60);
+    };
 
 
     filterList = (lis) => {
@@ -28,11 +34,12 @@ class MyProvider extends Component {
         return (
             <MyContext.Provider
                 value={{
-                    profile: this.state.profile,
-                    progress: this.state.progress,
+                    loading: this.state.loading,
                     filterList: this.filterList,
                     search: this.state.search,
                     setItem: this.setItem,
+                    setLoading: this.setLoading,
+
 
 
                 }}>
