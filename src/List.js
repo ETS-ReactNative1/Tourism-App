@@ -29,8 +29,9 @@ const List = ({ navigation }) => {
                 if (response.data.status === 200) {
                     setList(response.data.data)
                     setLoading(false)
+
                     console.log(list, "inside")
-                }else{
+                } else {
                     console.warn('not found')
                 }
             })
