@@ -8,14 +8,8 @@ import global from './global'
 
 const List = ({ navigation }) => {
     const context = useContext(MyContext)
-
-
-
     const [list, setList] = useState([])
     const [loading, setLoading] = useState(true)
-
-
-
 
     useEffect(() => {
         getData()
@@ -44,7 +38,6 @@ const List = ({ navigation }) => {
                 console.log(error);
             });
     }
-
 
 
     if (loading) {

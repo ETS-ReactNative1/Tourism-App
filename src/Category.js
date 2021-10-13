@@ -3,11 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Activi
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import '../global';
 
-
 import List from './List'
 import MyContext from './Contexts/Context'
-
-
 
 
 
@@ -20,8 +17,6 @@ const Category = ({ navigation }) => {
     }, []);
 
 
-
-
     const list = [
         { id: 1, name: 'Burger' },
         { id: 2, name: 'f' },
@@ -30,18 +25,13 @@ const Category = ({ navigation }) => {
         { id: 5, name: 'Pizzaddd' },
         { id: 6, name: 'Ch Biriyaani' },
         { id: 7, name: 'KFC' },
-
-
     ]
     const history = [{ id: 11, name: 'Pizza' },
     { id: 12, name: 'Burger King' },
     { id: 13, name: 'Biriyani fry' },
     { id: 14, name: 'Cold Coffee' },
-
     ]
-
-
-
+    
     const [page, setPage] = useState(true)
     const [searchField, setsearchField] = useState(null)
     const [close, setClose] = useState(false)
