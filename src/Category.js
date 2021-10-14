@@ -19,7 +19,7 @@ const Category = ({ navigation }) => {
 
     const list = [
         { id: 1, name: 'Burger' },
-        { id: 2, name: 'f' },
+        { id: 2, name: 'Kozhikode' },
         { id: 3, name: 'Keito Die' },
         { id: 4, name: 'kannur' },
         { id: 5, name: 'Pizzaddd' },
@@ -31,7 +31,7 @@ const Category = ({ navigation }) => {
     { id: 13, name: 'Biriyani fry' },
     { id: 14, name: 'Cold Coffee' },
     ]
-    
+
     const [page, setPage] = useState(true)
     const [searchField, setsearchField] = useState(null)
     const [close, setClose] = useState(false)
@@ -93,7 +93,7 @@ const Category = ({ navigation }) => {
                         <View style={styles.searchContainer}>
                             <View style={styles.searchBar}>
                                 <Icon name={"magnify"} size={22} color={'grey'} />
-                                <TextInput value={searchField} ref={searchInputRef} autoFocus={false} placeholder='Search food or reastuarents' style={styles.search}
+                                <TextInput value={searchField} ref={searchInputRef} autoFocus={false} placeholder='Search places or locations' style={styles.search}
                                     onChangeText={(e) => handleChange(e)}>
                                 </TextInput>
                                 <TouchableOpacity onPress={(clear) => handleClear(clear)}>
@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
     },
     subContainer: {
         alignItems: 'center',
-
         // backgroundColor: 'blue'
     },
     searchContainer: {

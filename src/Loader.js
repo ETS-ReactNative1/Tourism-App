@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet,ImageBackground } from 'react-native'
 import { Wander, Flow } from 'react-native-animated-spinkit'
 
 const Loader = ({ navigation }) => {

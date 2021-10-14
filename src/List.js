@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ActivityIndicator } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ActivityIndicator ,Image} from "react-native";
 import axios from 'axios'
 
 import MyContext from './Contexts/Context'
@@ -7,6 +7,17 @@ import './global';
 import global from './global'
 
 const List = ({ navigation }) => {
+
+
+    
+    // const data = [
+    //     { id: '1', place: 'First item' },
+    //     { id: '2', place: 'Second item' },
+    //     { id: '3', place: 'Third item' },
+    //     { id: '4', place: 'Fourth item' }
+    // ];
+
+
     const context = useContext(MyContext)
     const [list, setList] = useState([])
     const [loading, setLoading] = useState(true)
@@ -49,10 +60,19 @@ const List = ({ navigation }) => {
 
             <View>
                 {context.filterList(list).map((list, index) => (
-                    <TouchableOpacity style={{ backgroundColor: 'yellow', width: '100%' }} onPress={() => getData()}>
-                        <Text key={index} style={styles.itemText}>{list.place}</Text>
-                        <Text>{list.location}</Text>
+                    <View style={styles.WrapperContainer} key={list.id}>
+                    <TouchableOpacity activeOpacity={0.3}>
+                        <View style={styles.listItems}>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.image} source={{ uri: list.image }} />
+                            </View>
+                            <View style={styles.titleContainer}>
+                                <Text  key={index}  style={{ fontFamily: liteFont, fontSize: 18 ,color:'black'}}>{list.place}</Text>
+                                <Text style={{ fontFamily: baseFont, fontSize: 14, color: 'grey' }}>{list.location}</Text>
+                            </View>
+                        </View>
                     </TouchableOpacity>
+                </View>
                 ))}
             </View>
         </View>
@@ -63,13 +83,42 @@ export default List
 
 const styles = StyleSheet.create({
 
-    itemText: {
-        margin: 10,
-        color: 'white',
-        fontSize: 24,
-        backgroundColor: 'blue',
-        width: '100%',
+    // itemText: {
+    //     margin: 10,
+    //     color: 'white',
+    //     fontSize: 24,
+    //     backgroundColor: 'blue',
+    //     width: '100%',
+    //     height: 50,
+    // },
+    WrapperContainer: {
+        padding: '2%'
+
+    },
+    listItems: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        // backgroundColor:'blue',
+        marginBottom: 10
+
+
+    },
+    image: {
+        height: null,
+        width: null,
+        flex: 1,
+        resizeMode: 'cover',
+        borderRadius: 200
+    },
+    imageContainer: {
         height: 50,
+        width: 50
+    },
+    titleContainer: {
+        marginHorizontal: 20
     }
+
+
+
 
 })
