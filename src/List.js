@@ -42,7 +42,7 @@ const List = ({ navigation }) => {
 
 
     if (loading) {
-        return <View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size="small" color="#FD6244" /></View>
+        return <View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size="small" color="orange" /></View>
     }
     return (
         <View>
