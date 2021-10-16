@@ -24,7 +24,7 @@ const HomePage = ({ navigation }) => {
     const reels = [{
         id: 1, name: 'Malappuram,Kotakkkunnu', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4'
     },
-    { id: 2, name: 'Thiruvanatham,Kool', place: 'Palakkad', image: 'https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg' },
+    { id: 2, name: 'Thiruvanatham,Koolikk', place: 'Palakkad', image: 'https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg' },
     { id: 3, name: 'Malappuram,Kotaddk', place: 'Kannur', image: 'https://images.unsplash.com/photo-1571501679680-de32f1e7aad4' },
 
     ]
@@ -87,8 +87,11 @@ const HomePage = ({ navigation }) => {
                             <View style={styles.slider}>
                                 <Slider navigation={navigation} />
                             </View>
-                            <View style={{ marginTop: 10 }}>
+                            <View style={{ marginTop: 10 ,flexDirection:'row',alignItems: 'center',justifyContent: 'space-between'}}>
                                 <Text style={{ fontSize: 22, color: 'black', fontFamily: boldFont }}>Discover</Text>
+                                <TouchableOpacity>
+                                    <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>More</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>
@@ -97,8 +100,8 @@ const HomePage = ({ navigation }) => {
                             <View style={styles.reels}>
 
                                 {reels.map(item =>
-                                    <View style={{ marginHorizontal: 6 }} key={item.id}>
-                                        <ImageBackground style={styles.reelimg} imageStyle={{ height: 240, width: 160, borderRadius: 12 }} style={styles.img2} source={{ uri: item.image }}>
+                                    <TouchableOpacity activeOpacity={0.7} style={{ marginHorizontal: 6 }} key={item.id}>
+                                        <ImageBackground style={styles.reelimg} imageStyle={{ height: 250, width: 160, borderRadius: 12 }} style={styles.img2} source={{ uri: item.image }}>
                                             <View style={styles.inside}>
                                                 <View style={styles.head}>
                                                     <Text style={{ color: '#fff', fontFamily: liteFont, fontSize: 15 }}>{item.name}</Text>
@@ -112,7 +115,7 @@ const HomePage = ({ navigation }) => {
                                             </View>
 
                                         </ImageBackground>
-                                    </View>)}
+                                    </TouchableOpacity>)}
 
 
                             </View>
@@ -234,7 +237,7 @@ const styles = StyleSheet.create({
     },
     inside: {
         flex: 1,
-        backgroundColor: 'rgba(52, 52, 52, 0.4)',
+        backgroundColor: 'rgba(52, 52, 52, 0.5)',
         width: 160,
         borderRadius: 12,
         padding: 10,
@@ -242,7 +245,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     img2: {
-        height: 240,
+        height: 250,
         width: '100%',
         flex: 1,
         resizeMode: 'cover',
