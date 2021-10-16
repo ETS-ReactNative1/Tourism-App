@@ -42,11 +42,6 @@ const Category = ({ navigation }) => {
     //     return lis.filter(listItem => listItem.name.toLowerCase().includes(search.toLowerCase()));
 
     // }
-    // const lis = [{ name: 'The Weeknd' },
-    // { name: 'Drake' }, { name: 'Roddy Ricch' },
-    // { name: 'faeem', phone: 756 }];
-
-
 
 
     //check search text length for changing pages
