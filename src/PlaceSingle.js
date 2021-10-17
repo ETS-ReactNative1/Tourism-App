@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground ,ScrollView} from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -10,10 +10,10 @@ const PlaceSingle = () => {
     const [select, setSelect] = useState(1)
 
 
-    const item = [{ id: 1, title: 'Overview'},
+    const item = [{ id: 1, title: 'Overview' },
     { id: 2, title: 'Gallery' }]
 
-    const content = [{ id: 1, title: 'Why Not Go',description: 'deufgirifug3f3gfo43g'}]
+    const content = [{ id: 1, title: 'Why Not Go', description: 'deufgirifug3f3gfo43g' }]
 
 
 
@@ -21,7 +21,7 @@ const PlaceSingle = () => {
         setSelect(e)
         if (e === 1) {
             setPage(true)
-            console.log(e,'dd')
+            console.log(e, 'dd')
         } else {
             setPage(false)
             console.log(e)
@@ -35,15 +35,23 @@ const PlaceSingle = () => {
                 <ImageBackground imageStyle={{ borderBottomRightRadius: 30 }} style={styles.imageHotel} source={{ uri: 'https://images.unsplash.com/photo-1573398643956-2b9e6ade3456?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2lra2ltfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80' }}>
                     <View style={styles.subImg}>
                         <TouchableOpacity style={styles.back}>
-                    <Icon name={"keyboard-backspace"} size={35} color={'black'} />
-                    </TouchableOpacity>
+                            <Icon name={"keyboard-backspace"} size={35} color={'black'} />
+                        </TouchableOpacity>
+                        <View style={styles.name}>
+                            <Text style={{ fontSize: 30, fontFamily: liteFont, color: 'white' }}>Munnar Idukki</Text>
+                            <View style ={{ flexDirection: 'row',alignItems: 'center'}}>
+                                <Icon name={"map-marker-radius"} size={18} color={'orange'} />
+                                <Text style={{ fontSize: 16, fontFamily: boldFont, color: 'white' }}> Idukki,Kerala</Text>
+                            </View>
+
+                        </View>
                     </View>
                 </ImageBackground>
                 <View style={styles.sub}>
                     <View style={styles.title}>
                         {item.map(item =>
                             <TouchableOpacity key={item.id}>
-                                <Text style={select == item.id ? { ...styles.over, borderBottomWidth:2,borderBottomColor:'orange', }  : { ...styles.over, color: 'grey' }} onPress={() => handle(item.id)}>{item.title}</Text>
+                                <Text style={select == item.id ? { ...styles.over, borderBottomWidth: 2, borderBottomColor: 'orange', } : { ...styles.over, color: 'grey' }} onPress={() => handle(item.id)}>{item.title}</Text>
                             </TouchableOpacity>)}
                     </View>
                 </View>
@@ -82,7 +90,7 @@ const styles = StyleSheet.create({
     subImg: {
         height: 350,
         width: '100%',
-        backgroundColor: 'rgba(52, 52, 52, 0.1)',
+        backgroundColor: 'rgba(52, 52, 52, 0.4)',
         borderBottomRightRadius: 30,
     },
     sub: {
@@ -103,8 +111,13 @@ const styles = StyleSheet.create({
         borderColor: "orange",
 
     },
-    back:{
+    back: {
         padding: '2%',
         width: '15%',
+    },
+    name: {
+        padding: '4%',
+        marginTop: '60%',
+        // backgroundColor: 'blue'
     }
 })
