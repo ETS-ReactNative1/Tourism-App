@@ -61,7 +61,7 @@ const List = ({ navigation }) => {
             <View>
                 {context.filterList(list).map((list, index) => (
                     <View style={styles.WrapperContainer} key={list.id}>
-                    <TouchableOpacity activeOpacity={0.3}>
+                    <TouchableOpacity activeOpacity={0.3} onPress={() =>navigation.navigate('PlaceSingle',{item:list})}>
                         <View style={styles.listItems}>
                             <View style={styles.imageContainer}>
                                 <Image style={styles.image} source={{ uri: list.image }} />

@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, Scrol
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-const PlaceSingle = () => {
+const PlaceSingle = ({ navigation, route }) => {
 
 
     const [page, setPage] = useState(true)
@@ -31,37 +31,40 @@ const PlaceSingle = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.subContainer}>
-                <ImageBackground imageStyle={{ borderBottomRightRadius: 30 }} style={styles.imageHotel} source={{ uri: 'https://images.unsplash.com/photo-1573398643956-2b9e6ade3456?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2lra2ltfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80' }}>
-                    <View style={styles.subImg}>
-                        <TouchableOpacity style={styles.back}>
-                            <Icon name={"keyboard-backspace"} size={35} color={'black'} />
-                        </TouchableOpacity>
-                        <View style={styles.name}>
-                            <Text style={{ fontSize: 30, fontFamily: liteFont, color: 'white' }}>Munnar Idukki</Text>
-                            <View style ={{ flexDirection: 'row',alignItems: 'center'}}>
-                                <Icon name={"map-marker-radius"} size={18} color={'orange'} />
-                                <Text style={{ fontSize: 16, fontFamily: boldFont, color: 'white' }}> Idukki,Kerala</Text>
-                            </View>
+            <ScrollView>
+                <View style={styles.subContainer}>
+                    <ImageBackground imageStyle={{ borderBottomRightRadius: 30 }} style={styles.imageHotel} source={{ uri: route.params.item.image }}>
+                        <View style={styles.subImg}>
+                            <TouchableOpacity style={styles.back}>
+                                <Icon name={"keyboard-backspace"} size={35} color={'black'} />
+                            </TouchableOpacity>
+                            <View style={styles.name}>
+                                <Text style={{ fontSize: 30, fontFamily: liteFont, color: 'white' }}>{route.params.item.place},{ }</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <Icon name={"map-marker-radius"} size={18} color={'orange'} />
+                                    <Text style={{ fontSize: 16, fontFamily: boldFont, color: 'white' }}> {route.params.item.location}</Text>
+                                </View>
 
+                            </View>
+                        </View>
+                    </ImageBackground>
+                    <View style={styles.sub}>
+                        <View style={styles.title}>
+                            {item.map(item =>
+                                <TouchableOpacity key={item.id}>
+                                    <Text style={select == item.id ? { ...styles.over, borderBottomWidth: 2, borderBottomColor: 'orange', } : { ...styles.over, color: 'grey' }} onPress={() => handle(item.id)}>{item.title}</Text>
+                                </TouchableOpacity>)}
                         </View>
                     </View>
-                </ImageBackground>
-                <View style={styles.sub}>
-                    <View style={styles.title}>
-                        {item.map(item =>
-                            <TouchableOpacity key={item.id}>
-                                <Text style={select == item.id ? { ...styles.over, borderBottomWidth: 2, borderBottomColor: 'orange', } : { ...styles.over, color: 'grey' }} onPress={() => handle(item.id)}>{item.title}</Text>
-                            </TouchableOpacity>)}
+                    <View>
+
+                        {page === true ?
+                            <View>
+                                <Text>{route.params.item.description}</Text>
+                            </View> : <Text>{route.params.item.location}</Text>}
                     </View>
                 </View>
-                {page === true ?
-                    <View>
-                        <Text> item.title</Text>
-                    </View> : <Text>faheem</Text>}
-            </View>
-
-
+            </ScrollView>
         </View>
 
     )
