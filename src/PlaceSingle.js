@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground ,ScrollView} from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 const PlaceSingle = () => {
 
@@ -7,8 +9,11 @@ const PlaceSingle = () => {
     const [page, setPage] = useState(true)
     const [select, setSelect] = useState(1)
 
-    const item = [{ id: 1, title: 'Overview' },
+
+    const item = [{ id: 1, title: 'Overview'},
     { id: 2, title: 'Gallery' }]
+
+    const content = [{ id: 1, title: 'Why Not Go',description: 'deufgirifug3f3gfo43g'}]
 
 
 
@@ -29,6 +34,9 @@ const PlaceSingle = () => {
             <View style={styles.subContainer}>
                 <ImageBackground imageStyle={{ borderBottomRightRadius: 30 }} style={styles.imageHotel} source={{ uri: 'https://images.unsplash.com/photo-1573398643956-2b9e6ade3456?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2lra2ltfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80' }}>
                     <View style={styles.subImg}>
+                        <TouchableOpacity style={styles.back}>
+                    <Icon name={"keyboard-backspace"} size={35} color={'black'} />
+                    </TouchableOpacity>
                     </View>
                 </ImageBackground>
                 <View style={styles.sub}>
@@ -41,7 +49,7 @@ const PlaceSingle = () => {
                 </View>
                 {page === true ?
                     <View>
-                        <Text>heeello</Text>
+                        <Text> item.title</Text>
                     </View> : <Text>faheem</Text>}
             </View>
 
@@ -94,5 +102,9 @@ const styles = StyleSheet.create({
     border: {
         borderColor: "orange",
 
+    },
+    back:{
+        padding: '2%',
+        width: '15%',
     }
 })

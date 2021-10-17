@@ -100,11 +100,11 @@ const Navigation = () => {
     return (
 
         <Stack.Navigator >
+            <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomeTabs} />
             <Stack.Screen name="Loader" options={{ headerShown: false }} component={LoaderScreen} />
             <Stack.Screen name="Authcheck" options={{ headerShown: false }} component={AuthcheckScreen} />
             <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginScreen} />
             <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignupScreen} />
-            <Stack.Screen name="HomePage" options={{ headerShown: false }} component={HomeTabs} />
             <Stack.Screen name="Slider" options={{ headerShown: false }} component={Slider} />
             <Stack.Screen name="Profile" options={{ headerShown: false }} component={ProfileScreen} />
             <Stack.Screen name="Category" options={{ headerShown: false }} component={CategoryScreen} />
