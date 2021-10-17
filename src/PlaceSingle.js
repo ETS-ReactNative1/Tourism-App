@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground ,ScrollView} from 'react-native'
 
 const PlaceSingle = () => {
 
 
     const [page, setPage] = useState(true)
     const [select, setSelect] = useState(1)
-    const [bo, setBo] = useState(true)
 
     const item = [{ id: 1, title: 'Overview' },
     { id: 2, title: 'Gallery' }]
@@ -17,8 +16,10 @@ const PlaceSingle = () => {
         setSelect(e)
         if (e === 1) {
             setPage(true)
+            console.log(e,'dd')
         } else {
             setPage(false)
+            console.log(e)
         }
     }
 
@@ -34,7 +35,7 @@ const PlaceSingle = () => {
                     <View style={styles.title}>
                         {item.map(item =>
                             <TouchableOpacity key={item.id}>
-                                <Text style={select == item.id ? { ...styles.over, borderBottomWidth:2,borderBottomColor:'orange', }  : { ...styles.over, color: 'grey', }} onPress={() => handle(item.id)}>{item.title}</Text>
+                                <Text style={select == item.id ? { ...styles.over, borderBottomWidth:2,borderBottomColor:'orange', }  : { ...styles.over, color: 'grey' }} onPress={() => handle(item.id)}>{item.title}</Text>
                             </TouchableOpacity>)}
                     </View>
                 </View>
