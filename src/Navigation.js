@@ -13,6 +13,8 @@ import ProfileScreen from "./Profile";
 import CategoryScreen from "./Category";
 import PlacesScreen from "./Places";
 import ListScreen from "./List";
+import PlaceSingle from "./PlaceSingle";
+
 
 
 
@@ -50,11 +52,11 @@ const HomeTabs = () => {
                     <Icon name="map-marker-radius" color={focused ? '#f18100' : color} size={28} />
                 ),
             }} component={PlacesScreen} />
-            <Tab.Screen name="List" options={{
+            <Tab.Screen name="PlaceSingle" options={{
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="palm-tree" color={focused ? '#f18100' : color} size={28} />
                 ),
-            }} component={ListScreen} />
+            }} component={PlaceSingle} />
             <Tab.Screen name="Profile" options={{
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
@@ -108,6 +110,8 @@ const Navigation = () => {
             <Stack.Screen name="Category" options={{ headerShown: false }} component={CategoryScreen} />
             <Stack.Screen name="Places" options={{ headerShown: false }} component={PlacesScreen} />
             <Stack.Screen name="List" options={{ headerShown: false }} component={ListScreen} />
+            <Stack.Screen name="PlaceSingle" options={{ headerShown: false }} component={PlaceSingle} />
+
 
 
 
