@@ -6,7 +6,7 @@ const PlaceSingle = () => {
 
     const [page, setPage] = useState(true)
     const [select, setSelect] = useState(1)
-    const [bo, setBo] = useState(false)
+    const [bo, setBo] = useState(true)
 
     const item = [{ id: 1, title: 'Overview' },
     { id: 2, title: 'Gallery' }]
@@ -34,10 +34,7 @@ const PlaceSingle = () => {
                     <View style={styles.title}>
                         {item.map(item =>
                             <TouchableOpacity key={item.id}>
-                                <Text style={select == item.id ? styles.over : { ...styles.over, color: 'grey' }} onPress={() => handle(item.id)}>{item.title}</Text>
-                                {bo &&
-                                    <View style={styles.border}>
-                                    </View>}
+                                <Text style={select == item.id ? { ...styles.over, borderBottomWidth:2,borderBottomColor:'orange', }  : { ...styles.over, color: 'grey', }} onPress={() => handle(item.id)}>{item.title}</Text>
                             </TouchableOpacity>)}
                     </View>
                 </View>
@@ -94,9 +91,7 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     border: {
-        borderBottomWidth: 3,
-        borderColor: "blue",
-        marginHorizontal: 20
+        borderColor: "orange",
 
     }
 })
