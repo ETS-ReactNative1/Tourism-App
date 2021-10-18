@@ -10,7 +10,7 @@ const PlaceSingle = ({ navigation, route }) => {
     const [select, setSelect] = useState(1)
 
 
-    const item = [{ id: 1, title: 'Overview' },
+    const item = [{ id: 1, title: 'Overvie' },
     { id: 2, title: 'Gallery' }]
 
     const content = [{ id: 1, title: 'Why Not Go', description: 'deufgirifug3f3gfo43g' }]
