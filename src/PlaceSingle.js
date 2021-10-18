@@ -13,7 +13,7 @@ const PlaceSingle = ({ navigation, route }) => {
     const item = [{ id: 1, title: 'Overview' },
     { id: 2, title: 'Gallery' }]
 
-    const content = [{ id: 1, title: 'Why Not Go', description: 'deufgirifug3f3gfo43g' }]
+    const content = [{ id: 1, title: 'Why Not Go', description: 'deufgirifug3f3gfo4shfe3g' }]
 
 
 
