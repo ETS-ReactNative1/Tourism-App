@@ -14,6 +14,8 @@ import CategoryScreen from "./Category";
 import PlacesScreen from "./Places";
 import ListScreen from "./List";
 import PlaceSingle from "./PlaceSingle";
+import Section from "./Sections";
+
 
 
 
@@ -27,7 +29,7 @@ import Slider from './slider/Slider'
 
 
 
-// const Tab1 = createMaterialTopTabNavigator();
+const Tab1 = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -52,11 +54,11 @@ const HomeTabs = () => {
                     <Icon name="map-marker-radius" color={focused ? '#f18100' : color} size={28} />
                 ),
             }} component={PlacesScreen} />
-            <Tab.Screen name="PlaceSingle" options={{
+            <Tab.Screen name="Sections" options={{
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="palm-tree" color={focused ? '#f18100' : color} size={28} />
                 ),
-            }} component={PlaceSingle} />
+            }} component={MyTest} />
             <Tab.Screen name="Profile" options={{
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
@@ -74,25 +76,27 @@ const HomeTabs = () => {
 
 
 
-// const MyTest = () => {
-//     return (
-//         <Tab1.Navigator
-//             screenOptions={{
-//                 tabBarLabelStyle: { color: 'white', fontWeight: 'bold', fontSize: 15, marginTop: 30 },
-//                 tabBarItemStyle: {},
-//                 tabBarStyle: { backgroundColor: '#085E55', padding: 3},
+const MyTest = () => {
+    return (
+        <Tab1.Navigator
+            screenOptions={{
+                tabBarLabelStyle: { color: 'white', fontWeight: 'bold', fontSize: 15, marginTop: 0 },
+                tabBarItemStyle: {},
+                tabBarStyle: { backgroundColor: 'black', padding: 3},
 
-//             }}>
-//             <Tab1.Screen name="CHATS"
-//                 options={{
+            }}>
+            <Tab1.Screen name="CHATS"
+                options={{
+                    tabBarIcon: ({ focused, color }) => (
+                        <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
+                    ),
 
-//                 }} component={HotelListScreen} />
-//             <Tab1.Screen name="STATUS" component={foodListScreen} />
-//             <Tab1.Screen name="CALLS" component={HotelSingleScreen} />
+                }} component={Section} />
+            <Tab1.Screen name="CALLS" component={Section} />
 
-//         </Tab1.Navigator>
-//     )
-// }
+        </Tab1.Navigator>
+    )
+}
 
 
 
@@ -111,6 +115,8 @@ const Navigation = () => {
             <Stack.Screen name="Places" options={{ headerShown: false }} component={PlacesScreen} />
             <Stack.Screen name="List" options={{ headerShown: false }} component={ListScreen} />
             <Stack.Screen name="PlaceSingle" options={{ headerShown: false }} component={PlaceSingle} />
+            <Stack.Screen name="Sections" options={{ headerShown: false }} component={MyTest} />
+
 
 
 
