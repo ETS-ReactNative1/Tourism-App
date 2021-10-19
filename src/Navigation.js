@@ -82,9 +82,9 @@ const MyTest = () => {
             screenOptions={{
                 tabBarLabelStyle: { color: 'white', fontWeight: 'bold', fontSize: 15, marginTop: 0 },
                 tabBarItemStyle: {},
-                tabBarStyle: { backgroundColor: 'black', padding: 3},
+                tabBarStyle: { backgroundColor: 'black', padding: 3 },
 
-            }}>
+            }} tabBarOptions={{ showLabel: false }}>
             <Tab1.Screen name="CHATS"
                 options={{
                     tabBarIcon: ({ focused, color }) => (
@@ -92,7 +92,12 @@ const MyTest = () => {
                     ),
 
                 }} component={Section} />
-            <Tab1.Screen name="CALLS" component={Section} />
+            <Tab1.Screen name="CALLS" options={{
+                tabBarIcon: ({ focused, color }) => (
+                    <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
+                ),
+
+            }} component={Section} />
 
         </Tab1.Navigator>
     )
