@@ -35,7 +35,7 @@ const PlaceSingle = ({ navigation, route }) => {
                 <View style={styles.subContainer}>
                     <ImageBackground imageStyle={{ borderBottomRightRadius: 30 }} style={styles.imageHotel} source={{ uri: route.params.item.image }}>
                         <View style={styles.subImg}>
-                            <TouchableOpacity style={styles.back}>
+                            <TouchableOpacity style={styles.back} onPress={() => navigation.goBack()}>
                                 <Icon name={"keyboard-backspace"} size={35} color={'black'} />
                             </TouchableOpacity>
                             <View style={styles.name}>

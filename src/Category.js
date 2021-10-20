@@ -37,6 +37,7 @@ const Category = ({ navigation }) => {
     const [close, setClose] = useState(false)
     // const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
+    const [name, setName] = useState(null)
 
     // const filterList = (lis) => {
     //     return lis.filter(listItem => listItem.name.toLowerCase().includes(search.toLowerCase()));
