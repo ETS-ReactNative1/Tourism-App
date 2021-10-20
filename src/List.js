@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ActivityIndicator ,Image} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ActivityIndicator, Image } from "react-native";
 import axios from 'axios'
 
 import MyContext from './Contexts/Context'
@@ -9,7 +9,7 @@ import global from './global'
 const List = ({ navigation }) => {
 
 
-    
+
     // const data = [
     //     { id: '1', place: 'First item' },
     //     { id: '2', place: 'Second item' },
@@ -61,18 +61,18 @@ const List = ({ navigation }) => {
             <View>
                 {context.filterList(list).map((list, index) => (
                     <View style={styles.WrapperContainer} key={list.id}>
-                    <TouchableOpacity activeOpacity={0.3} onPress={() =>navigation.navigate('PlaceSingle',{item:list})}>
-                        <View style={styles.listItems}>
-                            <View style={styles.imageContainer}>
-                                <Image style={styles.image} source={{ uri: list.image }} />
+                        <TouchableOpacity activeOpacity={0.3} onPress={() => navigation.navigate('PlaceSingle', { item: list })}>
+                            <View style={styles.listItems}>
+                                <View style={styles.imageContainer}>
+                                    <Image style={styles.image} source={{ uri: list.image }} />
+                                </View>
+                                <View style={styles.titleContainer}>
+                                    <Text key={index} style={{ fontFamily: liteFont, fontSize: 18, color: 'black' }}>{list.place}</Text>
+                                    <Text style={{ fontFamily: baseFont, fontSize: 14, color: 'grey' }}>{list.location}</Text>
+                                </View>
                             </View>
-                            <View style={styles.titleContainer}>
-                                <Text  key={index}  style={{ fontFamily: liteFont, fontSize: 18 ,color:'black'}}>{list.place}</Text>
-                                <Text style={{ fontFamily: baseFont, fontSize: 14, color: 'grey' }}>{list.location}</Text>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+                        </TouchableOpacity>
+                    </View>
                 ))}
             </View>
         </View>
