@@ -2,6 +2,10 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ActivityIndicator } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import '../global';
+import './global';
+import global from './global'
+import axios from 'axios'
+
 
 import List from './List'
 import MyContext from './Contexts/Context'
@@ -12,40 +16,54 @@ const Category = ({ navigation }) => {
 
     const context = useContext(MyContext)
     const searchInputRef = React.useRef(null);
+
     useEffect(() => {
         searchInputRef.current.focus();
+        getData()
     }, []);
 
-
-    const list = [
-        { id: 1, name: 'Burger' },
-        { id: 2, name: 'Kozhikode' },
-        { id: 3, name: 'Keito Die' },
-        { id: 4, name: 'kannur' },
-        { id: 5, name: 'Pizzaddd' },
-        { id: 6, name: 'Ch Biriyaani' },
-        { id: 7, name: 'KFC' },
-    ]
-    const history = [{ id: 11, name: 'Pizza' },
-    { id: 12, name: 'Burger King' },
-    { id: 13, name: 'Biriyani fry' },
-    { id: 14, name: 'Cold Coffee' },
-    ]
 
     const [page, setPage] = useState(true)
     const [searchField, setsearchField] = useState(null)
     const [close, setClose] = useState(false)
     // const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
-    const [name, setName] = useState(null)
-
-    // const filterList = (lis) => {
-    //     return lis.filter(listItem => listItem.name.toLowerCase().includes(search.toLowerCase()));
-
-    // }
+    const [name, setName] = useState([])
 
 
-    //check search text length for changing pages
+    const getData = () => {
+        var config = {
+            method: 'get',
+            url: global.baseUrl + 'popular/',
+            // headers: {
+            // }
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                if (response.data.status === 200) {
+                    setName(response.data.data)
+                    setLoading(false)
+                } else {
+                    console.warn('no internet connection')
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.warn('no internet connection')
+
+            });
+
+    }
+
+    const history = [{ id: 11, name: 'Pizza' },
+    { id: 12, name: 'Burger King' },
+    { id: 13, name: 'Biriyani fry' },
+    { id: 14, name: 'Cold Coffee' },
+    ]
+
+
     const handleChange = (e) => {
         context.setItem(e)
         setsearchField(e)
@@ -78,6 +96,7 @@ const Category = ({ navigation }) => {
         handleChange(clear)
     }
 
+
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -102,11 +121,13 @@ const Category = ({ navigation }) => {
                 {page === true ?
                     <View>
                         <Text style={styles.title}>POPULAR SEARCHES</Text>
-                        <View style={styles.suggestList}>
-                            {list.map(item =>
-                                <TouchableOpacity onPress={() => handleSelect(item.name)} key={item.id}><Text style={styles.name}>{item.name}</Text></TouchableOpacity>
-                            )}
-                        </View>
+                        {loading ? <View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size="small" color="orange" /></View>
+                            :
+                            <View style={styles.suggestList}>
+                                {name.map(item =>
+                                    <TouchableOpacity onPress={() => handleSelect(item.name)} key={item.id}><Text style={styles.name}>{item.name}</Text></TouchableOpacity>
+                                )}
+                            </View>}
                         <View style={styles.history}>
                             <Text style={styles.recent}>RECENT SEARCHES</Text>
                         </View>
