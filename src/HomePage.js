@@ -1,5 +1,5 @@
-import React from 'react'
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
+import React, { useState } from 'react'
+import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, ImageBackground, Modal } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -8,6 +8,9 @@ import Slider from './slider/Slider'
 
 
 const HomePage = ({ navigation }) => {
+
+    const [modal, setModal] = useState(false)
+
 
 
 
@@ -33,6 +36,14 @@ const HomePage = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Modal animationType="slide" transparent={true} visible={modal} onRequestClose={() => {
+                setModal(!modal);
+            }}>
+                <View style={styles.modalView}>
+                    <Text>dugdu</Text>
+
+                </View>
+            </Modal>
             <ImageBackground imageStyle={{ borderBottomRightRadius: 40 }} style={styles.imageHotel} source={{ uri: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80' }}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.imageHotelContent}>
@@ -40,8 +51,9 @@ const HomePage = ({ navigation }) => {
                             <View style={styles.title}>
                                 <Text style={{ fontSize: 24, fontFamily: liteFont, color: 'white' }}>Hi</Text>
                                 <Text style={{ fontSize: 22, fontFamily: baseFont, color: 'orange', marginLeft: 6 }}>Faheem,</Text>
-                                <View style={{ paddingLeft: 180, alignItems: 'center' }}>
-                                    <Icon name={"bell-ring"} size={30} color={'orange'} />
+                                <View activeOpacity={0.9} style={{ paddingLeft: 180, alignItems: 'center'}}
+                                    onPress={() => setModal(!modal)}>
+                                    <Icon name={"bell-ring"} size={30} color={'orange'}  onPress={() => setModal(!modal)}/>
                                 </View>
 
                             </View>
@@ -51,7 +63,7 @@ const HomePage = ({ navigation }) => {
                                 <Text style={{ fontSize: 25, fontFamily: liteFont, color: '#fff' }}>?̾</Text>
                             </View>
                             <TouchableOpacity style={styles.searchView} activeOpacity={0.7}
-                            onPress={() => navigation.navigate('Category')}>
+                                onPress={() => navigation.navigate('Category')}>
                                 <Icon name={"magnify"} size={24} color={'orange'} />
                                 <Text style={{ color: '#f1f5f9', fontFamily: baseFont, fontSize: 15, paddingLeft: 5 }}>Search Places..</Text>
                             </TouchableOpacity>
@@ -87,7 +99,7 @@ const HomePage = ({ navigation }) => {
                             <View style={styles.slider}>
                                 <Slider navigation={navigation} />
                             </View>
-                            <View style={{ marginTop: 10 ,flexDirection:'row',alignItems: 'center',justifyContent: 'space-between'}}>
+                            <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Text style={{ fontSize: 22, color: 'black', fontFamily: boldFont }}>Discover</Text>
                                 <TouchableOpacity>
                                     <Text style={{ fontSize: 15, color: 'orange', fontFamily: liteFont }}>More</Text>
@@ -254,6 +266,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
 
 
+    },
+    modalView: {
+        height: 300,
+        width: '100%',
+        backgroundColor: '#f1f5f9',
+        marginTop: 415,
+        elevation: 2,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30
     }
 
 
