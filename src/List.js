@@ -57,11 +57,10 @@ const List = ({ navigation }) => {
     const pushData = (e) => {
         setHistory(e)
         const data = new FormData()
-        data.append('name', null);
-        data.append('history', e);
+        data.append('name', e);
         var config = {
             method: 'post',
-            url: global.baseUrl + 'popular/',
+            url: global.baseUrl + 'history/',
             // headers: {
             //     ...data.getHeaders()
             // },

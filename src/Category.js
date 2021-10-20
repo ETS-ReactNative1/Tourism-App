@@ -29,6 +29,8 @@ const Category = ({ navigation }) => {
     // const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
     const [name, setName] = useState([])
+    const [history, setHistory] = useState([])
+
 
 
     const getData = () => {
@@ -44,6 +46,7 @@ const Category = ({ navigation }) => {
                 console.log(JSON.stringify(response.data));
                 if (response.data.status === 200) {
                     setName(response.data.data)
+                    getHistory()
                     setLoading(false)
                 } else {
                     console.warn('no internet connection')
@@ -57,11 +60,26 @@ const Category = ({ navigation }) => {
 
     }
 
-    const history = [{ id: 11, name: 'Pizza' },
-    { id: 12, name: 'Burger King' },
-    { id: 13, name: 'Biriyani fry' },
-    { id: 14, name: 'Cold Coffee' },
-    ]
+
+    const getHistory = () => {
+        var config = {
+            method: 'get',
+            url: global.baseUrl + 'history/',
+            // headers: {
+            // }
+        };
+
+        axios(config)
+            .then(function (response) {
+                setHistory(response.data.data)
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
 
 
     const handleChange = (e) => {
@@ -97,29 +115,31 @@ const Category = ({ navigation }) => {
     }
 
 
+
     return (
         <View style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.subContainer}>
-                    <View style={styles.backBtn}>
-                        <TouchableOpacity style={{ paddingRight: 10 }} onPress={() => navigation.goBack()}>
-                            <Icon name={"arrow-left"} size={24} color={'#FD6244'} />
-                        </TouchableOpacity>
-                        <View style={styles.searchContainer}>
-                            <View style={styles.searchBar}>
-                                <Icon name={"magnify"} size={22} color={'grey'} />
-                                <TextInput value={searchField} ref={searchInputRef} autoFocus={false} placeholder='Search places or locations' style={styles.search}
-                                    onChangeText={(e) => handleChange(e)}>
-                                </TextInput>
-                                <TouchableOpacity onPress={(clear) => handleClear(clear)}>
-                                    {close && <Icon style={styles.closeBtn} name={"close"} size={18} color={'grey'} />}
-                                </TouchableOpacity>
-                            </View>
+            <View style={styles.subContainer}>
+                <View style={styles.backBtn}>
+                    <TouchableOpacity style={{ paddingRight: 10 }} onPress={() => navigation.goBack()}>
+                        <Icon name={"arrow-left"} size={24} color={'#FD6244'} />
+                    </TouchableOpacity>
+                    <View style={styles.searchContainer}>
+                        <View style={styles.searchBar}>
+                            <Icon name={"magnify"} size={22} color={'grey'} />
+                            <TextInput value={searchField} ref={searchInputRef} autoFocus={false} placeholder='Search places or locations' style={styles.search}
+                                onChangeText={(e) => handleChange(e)}>
+                            </TextInput>
+                            <TouchableOpacity onPress={(clear) => handleClear(clear)}>
+                                {close && <Icon style={styles.closeBtn} name={"close"} size={18} color={'grey'} />}
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
-                {page === true ?
-                    <View>
+            </View>
+            {page === true ?
+                <View>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+
                         <Text style={styles.title}>POPULAR SEARCHES</Text>
                         {loading ? <View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size="small" color="orange" /></View>
                             :
@@ -131,17 +151,20 @@ const Category = ({ navigation }) => {
                         <View style={styles.history}>
                             <Text style={styles.recent}>RECENT SEARCHES</Text>
                         </View>
-                        {history.map(items =>
-                            <TouchableOpacity key={items.id} onPress={() => handleSelect(items.name)}>
-                                <View style={styles.historyList}>
-                                    <Icon name={"history"} size={22} color={'rgba(52, 52, 52, 0.5)'} />
-                                    <View style={{ marginHorizontal: '8%' }} >
-                                        <Text style={{ fontFamily: baseFont, fontSize: 16 }}>{items.name}</Text>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>)}
-                    </View> : <List navigation={navigation} />}
-            </ScrollView>
+                            <View>
+                                {history.map(items =>
+                                    <TouchableOpacity key={items.id} onPress={() => handleSelect(items.name)}>
+                                        <View style={styles.historyList}>
+                                            <Icon name={"history"} size={22} color={'rgba(52, 52, 52, 0.5)'} />
+                                            <View style={{ marginHorizontal: '8%' }} >
+                                                <Text style={{ fontFamily: baseFont, fontSize: 16 }}>{items.name}</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>)}
+                            </View>
+                    </ScrollView>
+
+                </View> : <List navigation={navigation} />}
         </View>
     )
 }
