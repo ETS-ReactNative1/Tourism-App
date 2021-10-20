@@ -47,7 +47,6 @@ const Category = ({ navigation }) => {
                 if (response.data.status === 200) {
                     setName(response.data.data)
                     getHistory()
-                    setLoading(false)
                 } else {
                     console.warn('no internet connection')
                 }
@@ -72,6 +71,7 @@ const Category = ({ navigation }) => {
         axios(config)
             .then(function (response) {
                 setHistory(response.data.data)
+                setLoading(false)
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {
@@ -151,17 +151,17 @@ const Category = ({ navigation }) => {
                         <View style={styles.history}>
                             <Text style={styles.recent}>RECENT SEARCHES</Text>
                         </View>
-                            <View>
-                                {history.map(items =>
-                                    <TouchableOpacity key={items.id} onPress={() => handleSelect(items.name)}>
-                                        <View style={styles.historyList}>
-                                            <Icon name={"history"} size={22} color={'rgba(52, 52, 52, 0.5)'} />
-                                            <View style={{ marginHorizontal: '8%' }} >
-                                                <Text style={{ fontFamily: baseFont, fontSize: 16 }}>{items.name}</Text>
-                                            </View>
+                        <View>
+                            {history.map(items =>
+                                <TouchableOpacity key={items.id} onPress={() => handleSelect(items.name)}>
+                                    <View style={styles.historyList}>
+                                        <Icon name={"history"} size={22} color={'rgba(52, 52, 52, 0.5)'} />
+                                        <View style={{ marginHorizontal: '8%' }} >
+                                            <Text style={{ fontFamily: baseFont, fontSize: 16 }}>{items.name}</Text>
                                         </View>
-                                    </TouchableOpacity>)}
-                            </View>
+                                    </View>
+                                </TouchableOpacity>)}
+                        </View>
                     </ScrollView>
 
                 </View> : <List navigation={navigation} />}
