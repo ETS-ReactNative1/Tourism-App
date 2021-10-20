@@ -77,10 +77,6 @@ const List = ({ navigation }) => {
             });
     }
 
-    const push = () => {
-        navigation.navigate('PlaceSingle', { item: list })
-    }
-
 
     if (loading) {
         return <View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size="small" color="orange" /></View>
