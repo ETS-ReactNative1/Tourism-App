@@ -21,6 +21,7 @@ const List = ({ navigation }) => {
     const context = useContext(MyContext)
     const [list, setList] = useState([])
     const [loading, setLoading] = useState(true)
+    const [history, setHistory] = useState(null)
 
     useEffect(() => {
         getData()
@@ -52,6 +53,35 @@ const List = ({ navigation }) => {
     }
 
 
+
+    const pushData = (e) => {
+        setHistory(e)
+        const data = new FormData()
+        data.append('name', null);
+        data.append('history', e);
+        var config = {
+            method: 'post',
+            url: global.baseUrl + 'popular/',
+            // headers: {
+            //     ...data.getHeaders()
+            // },
+            data: data
+        };
+        console.log(config.url, config.data)
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    const push = () => {
+        navigation.navigate('PlaceSingle', { item: list })
+    }
+
+
     if (loading) {
         return <View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size="small" color="orange" /></View>
     }
@@ -61,7 +91,7 @@ const List = ({ navigation }) => {
             <View>
                 {context.filterList(list).map((list, index) => (
                     <View style={styles.WrapperContainer} key={list.id}>
-                        <TouchableOpacity activeOpacity={0.3} onPress={() => navigation.navigate('PlaceSingle', { item: list })}>
+                        <TouchableOpacity activeOpacity={0.3} onPress={() =>  navigation.navigate('PlaceSingle', { item: list },pushData(list.place))}>
                             <View style={styles.listItems}>
                                 <View style={styles.imageContainer}>
                                     <Image style={styles.image} source={{ uri: list.image }} />
