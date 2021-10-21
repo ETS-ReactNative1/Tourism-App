@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, Modal } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -8,10 +8,12 @@ const PlaceSingle = ({ navigation, route }) => {
 
     const [page, setPage] = useState(true)
     const [select, setSelect] = useState(1)
+    const [modal, setModal] = useState(false)
+
 
 
     const item = [{ id: 1, title: 'Overview' },
-    { id: 2, title: 'Gallery' }]
+    { id: 2, title: 'Gallery' },]
 
     const content = [{ id: 1, title: 'Why Not Go', description: 'deufgirifug3f3gfo4shfe3g' }]
 
@@ -54,6 +56,9 @@ const PlaceSingle = ({ navigation, route }) => {
                                 <TouchableOpacity key={item.id}>
                                     <Text style={select == item.id ? { ...styles.over, borderBottomWidth: 2, borderBottomColor: 'orange', } : { ...styles.over, color: 'grey' }} onPress={() => handle(item.id)}>{item.title}</Text>
                                 </TouchableOpacity>)}
+                            <TouchableOpacity activeOpacity={0.5} onPress={() => setModal(!modal)}>
+                                <Text style={{ ...styles.over, color: 'grey' }}>Reviews</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View>
@@ -64,6 +69,19 @@ const PlaceSingle = ({ navigation, route }) => {
                             </View> : <Text>{route.params.item.location}</Text>}
                     </View>
                 </View>
+                <Modal animationType="slide" transparent={true} visible={modal} onRequestClose={() => {
+                    setModal(!modal);
+                }}>
+                    <View style={styles.modalView}>
+                        <View style={styles.modalContainer}>
+                        <TouchableOpacity style={{ backgroundColor: '#F1F5F9', width: 20, borderRadius: 100, alignItems: 'center', elevation: 1, marginLeft: 300 }}
+                            onPress={() => setModal(!modal)}>
+                            <Icon name={"close"} size={19} color={'#FD6244'} />
+                        </TouchableOpacity>
+                        </View>
+
+                    </View>
+                </Modal>
             </ScrollView>
         </View>
 
@@ -75,7 +93,7 @@ export default PlaceSingle
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: '#f5fdf8',
         height: '100%',
         width: '100%',
     },
@@ -122,5 +140,17 @@ const styles = StyleSheet.create({
         padding: '4%',
         marginTop: '60%',
         // backgroundColor: 'blue'
+    },
+    modalView: {
+        height: 420,
+        width: '100%',
+        backgroundColor: '#fff',
+        marginVertical: 360,
+        elevation: 4,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30
+    },
+    modalContainer:{
+        padding: '5%'
     }
 })
