@@ -3,6 +3,6 @@ baseFont = 'Mulish-Regular';
 liteFont = 'Mulish-Bold';
 extraFont = 'Mulish-ExtraBold'
 
-const baseUrl = "https://b93a-43-229-88-35.ngrok.io/"
+const baseUrl = "https://e2d9-43-229-88-26.ngrok.io/"
 
 export default {baseUrl}
