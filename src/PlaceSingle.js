@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, Modal, TextInput } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, Modal, TextInput, ActivityIndicator } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import axios from 'axios'
+
+import './global';
+import global from './global'
+
 
 
 const PlaceSingle = ({ navigation, route }) => {
+
+    useEffect(() => {
+        getData()
+    }, []);
 
 
     const [page, setPage] = useState(true)
     const [select, setSelect] = useState(1)
     const [modal, setModal] = useState(false)
+    const [comment, setComment] = useState(null)
+    const [review, setReview] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [disabled, setDisabled] = useState(true);
+
 
 
 
@@ -28,6 +42,65 @@ const PlaceSingle = ({ navigation, route }) => {
             setPage(false)
             console.log(e)
         }
+    }
+
+
+    const handleChange = (e) => {
+        setComment(e)
+        if (e != null) {
+            if (e.length > 1) {
+                setDisabled(false)
+            }
+            else {
+                setDisabled(true)
+            }
+        }
+
+    }
+
+
+    const pushData = () => {
+        const data = new FormData()
+        data.append('comment', comment);
+        var config = {
+            method: 'post',
+            url: global.baseUrl + 'review/',
+            // headers: {
+            //     ...data.getHeaders()
+            // },
+            data: data
+        };
+        console.log(config.url, config.data)
+        axios(config)
+            .then(function (response) {
+                setLoading(true)
+                getData()
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+
+    const getData = () => {
+        var config = {
+            method: 'get',
+            url: global.baseUrl + 'review/',
+            // headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                setReview(response.data.data)
+                setLoading(false)
+                setComment("")
+                setDisabled(true)
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
 
@@ -80,18 +153,21 @@ const PlaceSingle = ({ navigation, route }) => {
                             </TouchableOpacity>
                             <ScrollView>
                                 <View style={{ borderBottomWidth: 1, borderColor: 'orange', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginRight: 30, marginVertical: 25 }}>
-                                    <TextInput placeholder='Submit Your Review' style={{ padding: 0 }}>
+                                    <TextInput value={comment} placeholder='Submit Your Review' style={{ padding: 0 }}
+                                        onChangeText={(e) => handleChange(e)}>
 
                                     </TextInput>
 
-                                    <TouchableOpacity>
-                                        <Icon style={{ flex: 1 }} name={"send-circle"} size={36} color={'#FD6244'} />
+                                    <TouchableOpacity onPress={() => pushData()} disabled={disabled} style={[disabled === true ? { ...styles.send, backgroundColor: 'grey' } : styles.send]}>
+                                        <Icon style={{ flex: 1 }} name={"send-circle-outline"} size={36} color={'white'} />
                                     </TouchableOpacity>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginVertical: 30, }}>
-                                    <Text style={styles.comments}>good plfefnlkelfehfoiehace</Text>
-                                    <Text style={styles.comments}>good plfefnlkelfehfoiehace</Text>
-                                </View>
+                                {loading ? <View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size="small" color="orange" /></View>
+                                    :
+                                    <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginVertical: 30, }}>
+                                        {review.map(item =>
+                                            <Text style={styles.comments}>{item.comment}</Text>)}
+                                    </View>}
                             </ScrollView>
                         </View>
                     </View>
@@ -163,8 +239,8 @@ const styles = StyleSheet.create({
         elevation: 4,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        borderWidth:1,
-        borderColor:'orange'
+        borderWidth: 1,
+        borderColor: 'orange'
     },
     modalContainer: {
         padding: '5%',
@@ -176,8 +252,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         elevation: 3,
         margin: 4,
-        fontFamily:baseFont, 
+        fontFamily: baseFont,
         color: 'white',
         textAlign: 'center'
+    },
+    send: {
+        backgroundColor: 'orange',
+        borderRadius: 100,
+        marginBottom: 5
     }
 })
