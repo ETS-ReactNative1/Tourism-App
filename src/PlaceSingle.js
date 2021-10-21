@@ -48,7 +48,7 @@ const PlaceSingle = ({ navigation, route }) => {
     const handleChange = (e) => {
         setComment(e)
         if (e != null) {
-            if (e.length > 1) {
+            if (e.length >=  1) {
                 setDisabled(false)
             }
             else {
