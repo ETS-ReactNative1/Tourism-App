@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, Modal } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, Modal, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -74,12 +74,26 @@ const PlaceSingle = ({ navigation, route }) => {
                 }}>
                     <View style={styles.modalView}>
                         <View style={styles.modalContainer}>
-                        <TouchableOpacity style={{ backgroundColor: '#F1F5F9', width: 20, borderRadius: 100, alignItems: 'center', elevation: 1, marginLeft: 300 }}
-                            onPress={() => setModal(!modal)}>
-                            <Icon name={"close"} size={19} color={'#FD6244'} />
-                        </TouchableOpacity>
-                        </View>
+                            <TouchableOpacity style={{ width: '100%', borderRadius: 100, alignItems: 'center', }}
+                                onPress={() => setModal(!modal)}>
+                                <Icon name={"close-circle-outline"} size={28} color={'#FD6244'} />
+                            </TouchableOpacity>
+                            <ScrollView>
+                                <View style={{ borderBottomWidth: 1, borderColor: 'orange', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginRight: 30, marginVertical: 25 }}>
+                                    <TextInput placeholder='Submit Your Review' style={{ padding: 0 }}>
 
+                                    </TextInput>
+
+                                    <TouchableOpacity>
+                                        <Icon style={{ flex: 1 }} name={"send-circle"} size={36} color={'#FD6244'} />
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginVertical: 30, }}>
+                                    <Text style={styles.comments}>good plfefnlkelfehfoiehace</Text>
+                                    <Text style={styles.comments}>good plfefnlkelfehfoiehace</Text>
+                                </View>
+                            </ScrollView>
+                        </View>
                     </View>
                 </Modal>
             </ScrollView>
@@ -148,9 +162,22 @@ const styles = StyleSheet.create({
         marginVertical: 360,
         elevation: 4,
         borderTopLeftRadius: 30,
-        borderTopRightRadius: 30
+        borderTopRightRadius: 30,
+        borderWidth:1,
+        borderColor:'orange'
     },
-    modalContainer:{
-        padding: '5%'
+    modalContainer: {
+        padding: '5%',
+    },
+    comments: {
+        backgroundColor: 'orange',
+        padding: 5,
+        borderRadius: 10,
+        justifyContent: 'center',
+        elevation: 3,
+        margin: 4,
+        fontFamily:baseFont, 
+        color: 'white',
+        textAlign: 'center'
     }
 })
