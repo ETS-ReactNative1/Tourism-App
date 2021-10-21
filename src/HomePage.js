@@ -40,7 +40,7 @@ const HomePage = ({ navigation }) => {
                 setModal(!modal);
             }}>
                 <View style={styles.modalView}>
-                    <Text>dugdu</Text>
+                    <Text>dugduefe</Text>
 
                 </View>
             </Modal>
