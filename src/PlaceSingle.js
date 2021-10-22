@@ -66,7 +66,6 @@ const PlaceSingle = ({ navigation, route }) => {
             method: 'post',
             url: global.baseUrl + 'review/',
             // headers: {
-            //     ...data.getHeaders()
             // },
             data: data
         };
