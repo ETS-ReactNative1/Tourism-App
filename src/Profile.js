@@ -4,10 +4,23 @@ import './global';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import global from './global'
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-export const Profile = () => {
+
+export const Profile = ({ navigation }) => {
+
+
+    const signOut = async () => {
+        await AsyncStorage.clear();
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }],
+        })
+    }
+
+
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -45,17 +58,17 @@ export const Profile = () => {
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignItems: 'center', marginVertical: 30 }}>
-                        <TouchableOpacity style={{...styles.changePassword,backgroundColor:'white',borderColor:'orange',borderWidth:2,width:'80%'}}>
-                            <View elevation={5} style={styles.lock}>
-                                <Icon name={"upload"} color={"orange"} size={22} />
-                            </View>
-                            <Text style={{ fontFamily:boldFont, fontSize: 24,color: 'orange',textAlign: 'center'}}>Upload</Text>
-                        </TouchableOpacity>
-                            <TouchableOpacity style={styles.changePassword}>
+                            <TouchableOpacity style={{ ...styles.changePassword, backgroundColor: 'white', borderColor: 'orange', borderWidth: 0.5 }}>
+                                <View elevation={5} style={styles.lock}>
+                                    <Icon name={"upload"} color={"orange"} size={22} />
+                                </View>
+                                <Text style={{ fontFamily: boldFont, fontSize: 24, color: 'orange', textAlign: 'center' }}>Upload</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.changePassword} onPress={() => signOut()}>
                                 <View elevation={5} style={styles.lock}>
                                     <Icon name={"arrow-right-bold-box-outline"} color={"orange"} size={22} />
                                 </View>
-                                <Text style={{ fontFamily:liteFont, fontSize: 20,color: 'black'}}>Sign Out</Text>
+                                <Text style={{ fontFamily: liteFont, fontSize: 20, color: 'orange' }}>Sign Out</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -94,7 +107,7 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         // justifyContent: 'center',
         // backgroundColor: 'blue',
-        marginTop: 40
+        marginTop: 25
     },
     username: {
         flexDirection: 'row',
@@ -139,16 +152,16 @@ const styles = StyleSheet.create({
     },
     changePassword: {
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         padding: '3%',
-        paddingHorizontal:20,
+        paddingHorizontal: 20,
         flexDirection: 'row',
-        borderRadius:12,
+        borderRadius: 12,
         justifyContent: 'space-around',
         marginVertical: 10,
         elevation: 5,
         width: '90%',
-        paddingRight:60,
+        paddingRight: 60,
 
     },
     lock: {
