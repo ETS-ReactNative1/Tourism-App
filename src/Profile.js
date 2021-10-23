@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     address: {
         position: 'absolute',
         textAlign: 'center',
-        // paddingLeft: 8,
         width: '100%',
         fontFamily: baseFont,
         fontSize: 16
