@@ -48,7 +48,7 @@ const PlaceSingle = ({ navigation, route }) => {
     const handleChange = (e) => {
         setComment(e)
         if (e != null) {
-            if (e.length >=  1) {
+            if (e.length >= 1) {
                 setDisabled(false)
             }
             else {
@@ -134,10 +134,13 @@ const PlaceSingle = ({ navigation, route }) => {
                         </View>
                     </View>
                     <View>
-
                         {page === true ?
                             <View style={styles.description}>
-                                <Text style={{fontFamily:baseFont}}>{route.params.item.description}</Text>
+                                <View style={{marginBottom:15}}>
+                                    <Text style={{ color: 'black', fontSize: 27, fontFamily: liteFont }}>WhY go Now : {route.params.item.place}</Text>
+                                </View>
+
+                                <Text style={{ fontFamily: baseFont }}>{route.params.item.description}</Text>
                             </View> : <Text>{route.params.item.location}</Text>}
                     </View>
                 </View>
@@ -261,6 +264,6 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     description: {
-        padding:'3%'
+        padding: '3%'
     }
 })
