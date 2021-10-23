@@ -105,7 +105,7 @@ const PlaceSingle = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.subContainer}>
                     <ImageBackground imageStyle={{ borderBottomRightRadius: 30 }} style={styles.imageHotel} source={{ uri: route.params.item.image }}>
                         <View style={styles.subImg}>
@@ -136,8 +136,8 @@ const PlaceSingle = ({ navigation, route }) => {
                     <View>
 
                         {page === true ?
-                            <View>
-                                <Text>{route.params.item.description}</Text>
+                            <View style={styles.description}>
+                                <Text style={{fontFamily:baseFont}}>{route.params.item.description}</Text>
                             </View> : <Text>{route.params.item.location}</Text>}
                     </View>
                 </View>
@@ -165,7 +165,7 @@ const PlaceSingle = ({ navigation, route }) => {
                                     :
                                     <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginVertical: 30, }}>
                                         {review.map(item =>
-                                            <Text style={styles.comments}>{item.comment}</Text>)}
+                                            <Text style={styles.comments} key={item.id}>{item.comment}</Text>)}
                                     </View>}
                             </ScrollView>
                         </View>
@@ -259,5 +259,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'orange',
         borderRadius: 100,
         marginBottom: 5
+    },
+    description: {
+        padding:'3%'
     }
 })
