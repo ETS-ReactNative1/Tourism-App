@@ -1,15 +1,71 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Modal, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Modal, TextInput, Image } from 'react-native'
 import './global';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import global from './global'
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 export const Profile = ({ navigation }) => {
+
+
+    const [name, setName] = useState(null)
+    const [place, setPlace] = useState(null)
+    const [experience, setExperience] = useState(null)
+    const [rating, setRating] = useState()
+    const [image, setImage] = useState(null)
+    const [disabled, setDisabled] = useState(true)
+
+
+    const handleChange = (e) => {
+        setRating(e)
+        console.log(rating, 'ddjodj')
+        if (name != null && e != null) {
+            if (name.length >= 2 && e.length >= 1) {
+                console.log(name, 'inside')
+                setDisabled(false)
+            } else {
+                setDisabled(true)
+            }
+        }
+
+    }
+
+
+    const imagePicker = () => {
+        let ImagePickerOptions = {
+            title: 'Choose your profile photo',
+            maxWidth: 1000,
+            mediaType: 'photo',
+            maxHeight: 1000,
+            quality: 1,
+            storageOptions: {
+                skipBackup: true,
+            },
+        };
+
+        launchImageLibrary(ImagePickerOptions, response => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const image_dir = response.assets[0];
+                const image = {
+                    uri: image_dir.uri,
+                    // type: 'jpeg',
+                    type: 'multipart/form-data',
+                    name: image_dir.fileName,
+                };
+                setImage(image), () => console.log(image, 'dd');
+            }
+        });
+    };
+
+
 
 
     const signOut = async () => {
@@ -23,42 +79,48 @@ export const Profile = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.subContainer}>
                     <View style={styles.navBar}>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name={"arrow-left"} size={26} color={'orange'} />
+                            <Icon name={"arrow-left"} size={26} color={'orange'}
+                                onPress={() => navigation.goBack()} />
                             <Text style={{ color: 'orange', fontFamily: liteFont, fontSize: 20, marginLeft: 80 }}>User Account</Text>
                         </View>
                     </View>
                     <View style={styles.inputContainer}>
                         <View style={styles.username}>
                             <Icon name={"account"} size={20} color={'orange'} style={{ paddingRight: 5 }} />
-                            <TextInput placeholder='Name' style={styles.search}>
+                            <TextInput placeholder='Name' style={styles.search}
+                                onChangeText={(e) => setName(e)}>
                             </TextInput>
                         </View>
                         <View style={styles.username}>
                             <Icon name={"crosshairs-gps"} size={20} color={'orange'} style={{ paddingRight: 5 }} />
-                            <TextInput placeholder='Visited Location' style={styles.search}>
+                            <TextInput placeholder='Visited Location' style={styles.search}
+                                onChangeText={(e) => setPlace(e)}>
                             </TextInput>
                         </View>
                         <View style={styles.textPara}>
-                            <TextInput placeholder='Experience' style={styles.address}>
+                            <TextInput placeholder='Experience' style={styles.address}
+                                onChangeText={(e) => setExperience(e)}>
                             </TextInput>
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                             <View style={{ ...styles.username, width: 140 }}>
-                                <Icon name={"account"} size={20} color={'orange'} />
-                                <TextInput placeholder='Rating out of 9' style={styles.search}>
+                                <Icon name={"star-half-full"} size={20} color={'orange'} />
+                                <TextInput keyboardType="numeric" maxLength={1} placeholder='Rating out of 9' style={styles.search}
+                                    onChangeText={(e) => handleChange(e)}>
                                 </TextInput>
                             </View>
-                            <TouchableOpacity style={styles.imageButton}>
+                            <TouchableOpacity style={styles.imageButton} onPress={() => imagePicker()}>
                                 <Icon name={"camera"} size={22} color={'orange'} />
                                 <Text style={{ color: 'white', fontFamily: liteFont, fontSize: 16 }}>Pick Image</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignItems: 'center', marginVertical: 30 }}>
-                            <TouchableOpacity style={{ ...styles.changePassword, backgroundColor: 'white', borderColor: 'orange', borderWidth: 0.5 }}>
+                            <TouchableOpacity style={{ ...styles.changePassword, backgroundColor: 'white', borderColor: 'orange', borderWidth: 0.5 }}
+                                disabled={disabled}>
                                 <View elevation={5} style={styles.lock}>
                                     <Icon name={"upload"} color={"orange"} size={22} />
                                 </View>

@@ -4609,7 +4609,7 @@ lodash.debounce@^4.0.8:
 
 lodash.filter@^4.6.0:
   version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.filter/-/lodash.filter-4.6.0.tgz#668b1d4981603ae1cc5a6fa760143e480b4c4ace"
+  resolved "https://registry.npmjs.org/lodash.filter/-/lodash.filter-4.6.0.tgz"
   integrity sha1-ZosdSYFgOuHMWm+nYBQ+SAtMSs4=
 
 lodash.frompairs@^4.0.1:
@@ -5758,6 +5758,11 @@ react-native-gesture-handler@^1.10.3:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-image-picker@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-4.1.2.tgz#1b4b4980a6878930675396c23dffbaa802cbbcc6"
+  integrity sha512-e4frAekSJkOgEmL9UOLukGhjtPwHSD7qSf3Rmwk+850ofxKqZFfAIfWc9MO3UmCb6G7oB6PkckyTOGOXybrN5A==
+
 react-native-image-slider-box@^1.1.8:
   version "1.1.8"
   resolved "https://registry.npmjs.org/react-native-image-slider-box/-/react-native-image-slider-box-1.1.8.tgz"
@@ -5772,7 +5777,7 @@ react-native-image-view@^2.1.9:
 
 react-native-image-viewing@^0.2.0:
   version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-image-viewing/-/react-native-image-viewing-0.2.0.tgz#3c0bc67cfb9aa7607cec632139d7ef4c45e07e4e"
+  resolved "https://registry.npmjs.org/react-native-image-viewing/-/react-native-image-viewing-0.2.0.tgz"
   integrity sha512-j2JXv86WRXGNme4LPsNCJ/2MgX+oVbmJ5ZLbGrYbKXcCPe9OshqlQI5L3SdbAxWu/F5pubcMaXp0zoYNaZVuzA==
 
 react-native-pager-view@^5.4.6:
