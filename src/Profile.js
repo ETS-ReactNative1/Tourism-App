@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import global from './global'
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 export const Profile = ({ navigation }) => {
 
@@ -16,6 +16,34 @@ export const Profile = ({ navigation }) => {
     const [rating, setRating] = useState()
     const [image, setImage] = useState(null)
     const [disabled, setDisabled] = useState(true)
+
+
+
+    const register = () => {
+        const data = new FormData()
+        data.append('name', name);
+        data.append('place', place);
+        data.append('experience', experience);
+        data.append('rating', rating);
+        data.append('image',image);
+        
+        var config = {
+            method: 'post',
+            url: global.baseUrl + 'api/users/',
+            // headers: {
+            //     ...data.getHeaders()
+            // },
+            data: data
+        };
+        console.log(config.url, config.data)
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
 
     const handleChange = (e) => {
@@ -120,7 +148,7 @@ export const Profile = ({ navigation }) => {
                         </View>
                         <View style={{ alignItems: 'center', marginVertical: 30 }}>
                             <TouchableOpacity style={{ ...styles.changePassword, backgroundColor: 'white', borderColor: 'orange', borderWidth: 0.5 }}
-                                disabled={disabled}>
+                                disabled={disabled} onPress={() => register()}>
                                 <View elevation={5} style={styles.lock}>
                                     <Icon name={"upload"} color={"orange"} size={22} />
                                 </View>
