@@ -25,8 +25,8 @@ export const Profile = ({ navigation }) => {
         data.append('place', place);
         data.append('experience', experience);
         data.append('rating', rating);
-        data.append('image',image);
-        
+        data.append('image', image);
+
         var config = {
             method: 'post',
             url: global.baseUrl + 'api/users/',
@@ -38,11 +38,21 @@ export const Profile = ({ navigation }) => {
         console.log(config.url, config.data)
         axios(config)
             .then(function (response) {
+                goTo()
+                setName('')
+                setPlace('')
+                setExperience('')
+                setRating('')
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {
                 console.log(error);
             });
+    }
+
+    const goTo = async () => {
+        await navigation.navigate('Sections')
+
     }
 
 
@@ -119,25 +129,25 @@ export const Profile = ({ navigation }) => {
                     <View style={styles.inputContainer}>
                         <View style={styles.username}>
                             <Icon name={"account"} size={20} color={'orange'} style={{ paddingRight: 5 }} />
-                            <TextInput placeholder='Name' style={styles.search}
+                            <TextInput value={name} placeholder='Name' style={styles.search}
                                 onChangeText={(e) => setName(e)}>
                             </TextInput>
                         </View>
                         <View style={styles.username}>
                             <Icon name={"crosshairs-gps"} size={20} color={'orange'} style={{ paddingRight: 5 }} />
-                            <TextInput placeholder='Visited Location' style={styles.search}
+                            <TextInput value={place} placeholder='Visited Location' style={styles.search}
                                 onChangeText={(e) => setPlace(e)}>
                             </TextInput>
                         </View>
                         <View style={styles.textPara}>
-                            <TextInput placeholder='Experience' style={styles.address}
+                            <TextInput value={experience} placeholder='Experience' style={styles.address}
                                 onChangeText={(e) => setExperience(e)}>
                             </TextInput>
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                             <View style={{ ...styles.username, width: 140 }}>
                                 <Icon name={"star-half-full"} size={20} color={'orange'} />
-                                <TextInput keyboardType="numeric" maxLength={1} placeholder='Rating out of 9' style={styles.search}
+                                <TextInput value={rating} keyboardType="numeric" maxLength={1} placeholder='Rating out of 9' style={styles.search}
                                     onChangeText={(e) => handleChange(e)}>
                                 </TextInput>
                             </View>

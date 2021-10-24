@@ -58,7 +58,7 @@ const HomeTabs = () => {
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="palm-tree" color={focused ? '#f18100' : color} size={28} />
                 ),
-            }} component={MyTest} />
+            }} component={Section} />
             <Tab.Screen name="Profile" options={{
                 tabBarIcon: ({ focused, color }) => (
                     <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
@@ -76,32 +76,32 @@ const HomeTabs = () => {
 
 
 
-const MyTest = () => {
-    return (
-        <Tab1.Navigator
-            screenOptions={{
-                tabBarLabelStyle: { color: 'white', fontWeight: 'bold', fontSize: 15, marginTop: 0 },
-                tabBarItemStyle: {},
-                tabBarStyle: { backgroundColor: 'black', padding: 3 },
+// const MyTest = () => {
+//     return (
+//         <Tab1.Navigator
+//             screenOptions={{
+//                 tabBarLabelStyle: { color: 'white', fontWeight: 'bold', fontSize: 15, marginTop: 0 },
+//                 tabBarItemStyle: {},
+//                 tabBarStyle: { backgroundColor: 'black', padding: 3 },
 
-            }} tabBarOptions={{ showLabel: false }}>
-            <Tab1.Screen name="CHATS"
-                options={{
-                    tabBarIcon: ({ focused, color }) => (
-                        <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
-                    ),
+//             }} tabBarOptions={{ showLabel: false }}>
+//             <Tab1.Screen name="CHATS"
+//                 options={{
+//                     tabBarIcon: ({ focused, color }) => (
+//                         <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
+//                     ),
 
-                }} component={Section} />
-            <Tab1.Screen name="CALLS" options={{
-                tabBarIcon: ({ focused, color }) => (
-                    <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
-                ),
+//                 }} component={Section} />
+//             <Tab1.Screen name="CALLS" options={{
+//                 tabBarIcon: ({ focused, color }) => (
+//                     <Icon name="account-tie" color={focused ? '#f18100' : color} size={28} />
+//                 ),
 
-            }} component={Section} />
+//             }} component={Section} />
 
-        </Tab1.Navigator>
-    )
-}
+//         </Tab1.Navigator>
+//     )
+// }
 
 
 
@@ -120,7 +120,7 @@ const Navigation = () => {
             <Stack.Screen name="Places" options={{ headerShown: false }} component={PlacesScreen} />
             <Stack.Screen name="List" options={{ headerShown: false }} component={ListScreen} />
             <Stack.Screen name="PlaceSingle" options={{ headerShown: false }} component={PlaceSingle} />
-            <Stack.Screen name="Sections" options={{ headerShown: false }} component={MyTest} />
+            <Stack.Screen name="Sections" options={{ headerShown: false }} component={Section} />
 
 
 
