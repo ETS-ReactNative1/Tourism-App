@@ -27,6 +27,7 @@ export const Profile = ({ navigation }) => {
         data.append('experience', experience);
         data.append('rating', rating);
         data.append('image', image);
+        data.append('profile', profile);
 
         var config = {
             method: 'post',
