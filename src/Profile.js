@@ -162,11 +162,11 @@ export const Profile = ({ navigation }) => {
                     </View>
                     <View style={styles.imageMainContainer}>
                         <View style={styles.image2Container}>
-                            {profile !== null  ? (
+                            {profile !== null ? (
                                 <Image
-                                    source={{
-                                        uri: 'https://www.shareicon.net/data/512x512/2016/08/05/806962_user_512x512.png'
-                                    }}
+                                    source={profile
+
+                                    }
 
                                     style={[styles.image2]}
                                 />
