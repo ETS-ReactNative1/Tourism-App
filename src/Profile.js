@@ -15,6 +15,7 @@ export const Profile = ({ navigation }) => {
     const [experience, setExperience] = useState(null)
     const [rating, setRating] = useState()
     const [image, setImage] = useState(null)
+    const [profile, setProfile] = useState(null)
     const [disabled, setDisabled] = useState(true)
 
 
@@ -105,6 +106,39 @@ export const Profile = ({ navigation }) => {
 
 
 
+    const profilePic = () => {
+        let ImagePickerOptions = {
+            title: 'Choose your profile photo',
+            maxWidth: 1000,
+            mediaType: 'photo',
+            maxHeight: 1000,
+            quality: 1,
+            storageOptions: {
+                skipBackup: true,
+            },
+        };
+
+        launchImageLibrary(ImagePickerOptions, response => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const image_dir = response.assets[0];
+                const profile = {
+                    uri: image_dir.uri,
+                    type: 'jpeg',
+                    type: 'multipart/form-data',
+                    name: image_dir.fileName,
+                };
+                setProfile(profile), () => console.log(profile, 'dd');
+            }
+        });
+    };
+
+
 
     const signOut = async () => {
         await AsyncStorage.clear();
@@ -124,6 +158,31 @@ export const Profile = ({ navigation }) => {
                             <Icon name={"arrow-left"} size={26} color={'orange'}
                                 onPress={() => navigation.goBack()} />
                             <Text style={{ color: 'orange', fontFamily: liteFont, fontSize: 20, marginLeft: 80 }}>User Account</Text>
+                        </View>
+                    </View>
+                    <View style={styles.imageMainContainer}>
+                        <View style={styles.image2Container}>
+                            {profile !== null  ? (
+                                <Image
+                                    source={{
+                                        uri: 'https://www.shareicon.net/data/512x512/2016/08/05/806962_user_512x512.png'
+                                    }}
+
+                                    style={[styles.image2]}
+                                />
+                            ) : (
+                                <Image
+                                    source={{
+                                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLj3uBOTHHrRvQY0SDv_9a1dy2mOFpqcjfRQ&usqp=CAU',
+                                    }}
+                                    style={[styles.image2]}
+                                />
+                            )}
+
+                            <TouchableOpacity style={styles.camera} onPress={() => profilePic()}>
+                                <Icon name={"camera"} color={"black"} size={20} />
+                            </TouchableOpacity>
+
                         </View>
                     </View>
                     <View style={styles.inputContainer}>
@@ -271,5 +330,39 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         elevation: 4,
         borderRadius: 5,
+    },
+    imageMainContainer: {
+        alignItems: 'center',
+        marginTop: '6%',
+
+    },
+    image2Container: {
+        height: 100,
+        width: 100,
+        backgroundColor: '#F5FDF8',
+        borderRadius: 500,
+        // overflow: 'hidden'
+
+    },
+    image2: {
+        height: null,
+        width: null,
+        flex: 1,
+        resizeMode: 'cover',
+        borderRadius: 60
+    },
+    camera: {
+        width: 24,
+        height: 24,
+        backgroundColor: '#F5FDF8',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        borderRadius: 40,
+        top: 80,
+        right: 1,
+        elevation: 3,
+
+
     }
 })
