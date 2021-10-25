@@ -775,6 +775,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fawazahmed/react-native-read-more@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@fawazahmed/react-native-read-more/-/react-native-read-more-2.2.0.tgz#f3b70a423626ecd4ac483efdc537d6b3336719cb"
+  integrity sha512-RUpEr/slb2d07MgzcIuhlOmW3BtjR4/ZP3+VCnCOUVY0MnQtl7BREFIhdMj66tcWe0silu+8PtwTyRY5Ik91Ew==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
   resolved "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.2.1.tgz"
