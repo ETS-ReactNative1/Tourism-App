@@ -6,7 +6,8 @@ import global from './global'
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { Chase } from 'react-native-animated-spinkit'
+import { CircleFade } from 'react-native-animated-spinkit'
+import { set } from 'lodash';
 
 
 export const Profile = ({ navigation }) => {
@@ -19,7 +20,7 @@ export const Profile = ({ navigation }) => {
     const [image, setImage] = useState(null)
     const [profile, setProfile] = useState(null)
     const [disabled, setDisabled] = useState(true)
-    const [modal, setModal] = useState(false)
+    const [loading, setLoading] = useState(false)
 
 
 
@@ -45,10 +46,13 @@ export const Profile = ({ navigation }) => {
         axios(config)
             .then(function (response) {
                 goTo()
+                setLoading(false)
                 setName('')
                 setPlace('')
                 setExperience('')
                 setRating('')
+                setImage(null)
+                setDisabled(true)
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {
@@ -58,20 +62,8 @@ export const Profile = ({ navigation }) => {
 
     const goTo = async () => {
         await navigation.navigate('Sections')
-
-
     }
 
-    const time = () => {
-        setTimeout(async () => {
-        setModal(!modal)
-
-
-        }, 2000)
-
-
-
-    }
 
 
     const handleChange = (e) => {
@@ -156,6 +148,12 @@ export const Profile = ({ navigation }) => {
     };
 
 
+    const upload = () => {
+        setLoading(true)
+        register()
+    }
+
+
 
     const signOut = async () => {
         await AsyncStorage.clear();
@@ -168,22 +166,6 @@ export const Profile = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Modal animationType="slide" transparent={true} visible={modal} onRequestClose={() => {
-                setModal(!modal);
-            }}>
-                <View style={styles.modalContainer}>
-                    <View style={{
-                        height: 400, width: 300, justifyContent: 'center', alignItems: 'center', justifyContent: 'center',
-                        backgroundColor: 'white', borderRadius: 20, elevation: 6, borderWidth: 0.5, borderColor: 'orange'
-                    }}>
-                        <Icon style={{ marginVertical: 5 }} name={"upload"} size={60} color={'green'} />
-                        <Text style={{ color: 'green', fontSize: 35, fontFamily: boldFont, textAlign: 'center' }}>Suuceesfully Uploading</Text>
-                        <View style={{ marginTop: 40 }}>
-                            <Chase size={60} color="orange" />
-                        </View>
-                    </View>
-                </View>
-            </Modal>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.subContainer}>
                     <View style={styles.navBar}>
@@ -218,6 +200,7 @@ export const Profile = ({ navigation }) => {
 
                         </View>
                     </View>
+
                     <View style={styles.inputContainer}>
                         <View style={styles.username}>
                             <Icon name={"account"} size={20} color={'orange'} style={{ paddingRight: 5 }} />
@@ -248,9 +231,14 @@ export const Profile = ({ navigation }) => {
                                 <Text style={{ color: 'white', fontFamily: liteFont, fontSize: 16 }}>Pick Image</Text>
                             </TouchableOpacity>
                         </View>
+                        {loading &&
+                            <View style={{ alignItems: 'center' }}>
+                                <Text>Uploading...</Text>
+                                <CircleFade size={50} color="orange" />
+                            </View>}
                         <View style={{ alignItems: 'center', marginVertical: 30 }}>
                             <TouchableOpacity style={{ ...styles.changePassword, backgroundColor: 'white', borderColor: 'orange', borderWidth: 0.5 }}
-                                disabled={disabled} onPress={() => register(time())}>
+                                disabled={disabled} onPress={() => upload()}>
                                 <View elevation={5} style={styles.lock}>
                                     <Icon name={"upload"} color={"orange"} size={22} />
                                 </View>
