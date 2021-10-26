@@ -6,6 +6,8 @@ import global from './global'
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { Chase } from 'react-native-animated-spinkit'
+
 
 export const Profile = ({ navigation }) => {
 
@@ -17,6 +19,8 @@ export const Profile = ({ navigation }) => {
     const [image, setImage] = useState(null)
     const [profile, setProfile] = useState(null)
     const [disabled, setDisabled] = useState(true)
+    const [modal, setModal] = useState(false)
+
 
 
 
@@ -54,6 +58,18 @@ export const Profile = ({ navigation }) => {
 
     const goTo = async () => {
         await navigation.navigate('Sections')
+
+
+    }
+
+    const time = () => {
+        setTimeout(async () => {
+        setModal(!modal)
+
+
+        }, 2000)
+
+
 
     }
 
@@ -152,6 +168,22 @@ export const Profile = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Modal animationType="slide" transparent={true} visible={modal} onRequestClose={() => {
+                setModal(!modal);
+            }}>
+                <View style={styles.modalContainer}>
+                    <View style={{
+                        height: 400, width: 300, justifyContent: 'center', alignItems: 'center', justifyContent: 'center',
+                        backgroundColor: 'white', borderRadius: 20, elevation: 6, borderWidth: 0.5, borderColor: 'orange'
+                    }}>
+                        <Icon style={{ marginVertical: 5 }} name={"upload"} size={60} color={'green'} />
+                        <Text style={{ color: 'green', fontSize: 35, fontFamily: boldFont, textAlign: 'center' }}>Suuceesfully Uploading</Text>
+                        <View style={{ marginTop: 40 }}>
+                            <Chase size={60} color="orange" />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.subContainer}>
                     <View style={styles.navBar}>
@@ -218,7 +250,7 @@ export const Profile = ({ navigation }) => {
                         </View>
                         <View style={{ alignItems: 'center', marginVertical: 30 }}>
                             <TouchableOpacity style={{ ...styles.changePassword, backgroundColor: 'white', borderColor: 'orange', borderWidth: 0.5 }}
-                                disabled={disabled} onPress={() => register()}>
+                                disabled={disabled} onPress={() => register(time())}>
                                 <View elevation={5} style={styles.lock}>
                                     <Icon name={"upload"} color={"orange"} size={22} />
                                 </View>
@@ -365,5 +397,10 @@ const styles = StyleSheet.create({
         elevation: 3,
 
 
+    },
+    modalContainer: {
+        alignItems: 'center',
+        marginVertical: 220,
+        flex: 1
     }
 })
