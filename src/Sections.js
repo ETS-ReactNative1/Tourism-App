@@ -33,7 +33,11 @@ const Sections = () => {
                 <View style={styles.card} key={items.id}>
                     <View style={styles.cardTitle}>
                         <View style={{ padding: '2%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Icon name={"account-circle"} size={43} />
+                        <View style={styles.image2Container}>
+                            <Image style={styles.image2} source={{ uri:'https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80'}}>
+
+                            </Image>
+                            </View>
                             <View style={{ marginRight: 125 }}>
                                 <Text style={{ color: 'black', fontFamily: boldFont, fontSize: 16 }}>{items.name}</Text>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -105,5 +109,20 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         marginTop: 12
-    }
+    },
+    image2Container: {
+        height: 40,
+        width: 40,
+        backgroundColor: '#F5FDF8',
+        borderRadius: 500,
+        // overflow: 'hidden'
+
+    },
+    image2: {
+        height: null,
+        width: null,
+        flex: 1,
+        resizeMode: 'cover',
+        borderRadius: 60
+    },
 })
