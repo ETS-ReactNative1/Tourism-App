@@ -19,6 +19,7 @@ const Sections = () => {
     }, []);
 
     const getData = () => {
+        setLoading(true)
         var config = {
             method: 'get',
             url: global.baseUrl + 'api/users/',
@@ -52,6 +53,11 @@ const Sections = () => {
         <View style={styles.container}>
             <View style={styles.navBar}>
                 <Text style={{ color: 'orange', fontFamily: boldFont, fontSize: 20 }}>Users Post</Text>
+                <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }}
+                onPress={() => getData()}>
+                    <Icon name={"refresh"} size={24} color={'orange'} />
+                    <Text style={{ color: 'orange', fontFamily: baseFont, fontSize: 12 }}>Refresh</Text>
+                </TouchableOpacity>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 {user.map(items =>
@@ -59,7 +65,7 @@ const Sections = () => {
                         <View style={styles.cardTitle}>
                             <View style={{ padding: '2%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <View style={styles.image2Container}>
-                                    <Image style={styles.image2} source={{uri:items.profile}}>
+                                    <Image style={styles.image2} source={{ uri: items.profile }}>
 
                                     </Image>
                                 </View>
@@ -76,7 +82,7 @@ const Sections = () => {
                             </View>
                         </View>
                         <View style={styles.imageContainer}>
-                            <Image style={styles.image} source={{uri:items.image}} />
+                            <Image style={styles.image} source={{ uri: items.image }} />
                         </View>
                         <View style={styles.description}>
                             <ReadMore numberOfLines={3} style={{ fontFamily: boldFont }} >
@@ -95,7 +101,7 @@ const Sections = () => {
                     </View>)}
             </ScrollView>
 
-        </View>
+        </View >
     )
 }
 
@@ -110,7 +116,9 @@ const styles = StyleSheet.create({
     },
     navBar: {
         backgroundColor: 'black',
-        padding: 15
+        padding: 15,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     cardTitle: {
         backgroundColor: 'white',
@@ -133,7 +141,7 @@ const styles = StyleSheet.create({
         padding: '2%'
     },
     cardTitle: {
-        marginTop: 12
+        marginTop: 14
     },
     image2Container: {
         height: 40,
