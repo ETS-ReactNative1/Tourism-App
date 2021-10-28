@@ -133,9 +133,6 @@ const HomePage = ({ navigation }) => {
                             </View>
                         </ScrollView>
                         <Text>eusdg</Text>
-                        <Text>eusdg</Text>
-                        <Text>eusdg</Text>
-                        <Text>eusdg</Text>
 
                     </View>
                 </ScrollView>
