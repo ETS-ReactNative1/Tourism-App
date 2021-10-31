@@ -10,31 +10,11 @@ export const Places = () => {
     //     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
     // }, [])
 
-    const images = [
-        {   id: 1,
-            uri: "https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg'",
-        },
-        {
-            id:2,
-            uri: "https://images.unsplash.com/photo-1571501679680-de32f1e7aad4",
-        },
-    ];
-
-    const [visible, setIsVisible] = useState(false);
 
     return (
         <View style={{ height: '100%' }}>
             <View>
-                <TouchableOpacity style={{ padding: 20, backgroundColor: 'red' }}
-                    onPress={() => setIsVisible(true)}>
-                    <Text>dheuf</Text>
-                </TouchableOpacity>
-                <ImageView
-                images={images}
-                imageIndex={0}
-                visible={visible}
-                onRequestClose={() => setIsVisible(false)}
-                />
+                <Text>fihew</Text>
             </View>
         </View>
     )

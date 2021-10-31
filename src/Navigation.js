@@ -51,7 +51,7 @@ const HomeTabs = () => {
             }} component={HomePageScreen} />
             <Tab.Screen name="Places" options={{
                 tabBarIcon: ({ focused, color }) => (
-                    <Icon name="map-marker-radius" color={focused ? '#f18100' : color} size={28} />
+                    <Icon name="phone" color={focused ? '#f18100' : color} size={28} />
                 ),
             }} component={PlacesScreen} />
             <Tab.Screen name="Sections" options={{

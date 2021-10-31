@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, ImageBackground, Modal } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ImageView from "react-native-image-viewing";
 
 
 
@@ -10,6 +11,8 @@ import Slider from './slider/Slider'
 const HomePage = ({ navigation }) => {
 
     const [modal, setModal] = useState(false)
+    const [visible, setIsVisible] = useState(false);
+
 
 
 
@@ -22,6 +25,20 @@ const HomePage = ({ navigation }) => {
 
 
     ]
+
+    const images = [
+        {   id: 1,
+            uri: "https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg'",
+        },
+        {
+            id:2,
+            uri: "https://images.unsplash.com/photo-1571501679680-de32f1e7aad4",
+        },
+        {
+            id:3,
+            uri: "https://images.unsplash.com/photo-1571501679680-de32f1e7aad4",
+        },
+    ];
 
 
     const reels = [{
@@ -112,7 +129,7 @@ const HomePage = ({ navigation }) => {
                             <View style={styles.reels}>
 
                                 {reels.map(item =>
-                                    <TouchableOpacity activeOpacity={0.7} style={{ marginHorizontal: 6 }} key={item.id}>
+                                    <TouchableOpacity activeOpacity={0.7} style={{ marginHorizontal: 6 }} key={item.id} onPress={() => setIsVisible(true)}>
                                         <ImageBackground style={styles.reelimg} imageStyle={{ height: 250, width: 160, borderRadius: 12 }} style={styles.img2} source={{ uri: item.image }}>
                                             <View style={styles.inside}>
                                                 <View style={styles.head}>
@@ -133,13 +150,19 @@ const HomePage = ({ navigation }) => {
                             </View>
                         </ScrollView>
                         <View style={styles.reelUnder}>
-                            <TouchableOpacity activeOpacity={0.7} style={styles.explore}>
-                                <Text style={{color:'#f1f5f9',fontFamily:liteFont,fontSize:18}}>Explore more places</Text>
-                                <Icon name={"arrow-decision-outline"} size={24} color={'black'} style={{marginLeft:10}} />
+                            <TouchableOpacity activeOpacity={0.7} style={styles.explore} onPress={() => navigation.navigate('Sections')}>
+                                <Text style={{ color: '#f1f5f9', fontFamily: liteFont, fontSize: 18 }}>Explore more places</Text>
+                                <Icon name={"arrow-decision-outline"} size={24} color={'black'} style={{ marginLeft: 10 }} />
                             </TouchableOpacity>
                         </View>
-
+                        <ImageView
+                            images={images}
+                            imageIndex={0}
+                            visible={visible}
+                            onRequestClose={() => setIsVisible(false)}
+                        />
                     </View>
+
                 </ScrollView>
             </ImageBackground>
 
@@ -278,17 +301,17 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30
     },
-    reelUnder:{
-        padding:10
+    reelUnder: {
+        padding: 10
 
     },
     explore: {
-        padding:12,
+        padding: 12,
         backgroundColor: 'orange',
-        borderTopRightRadius:15,
-        borderBottomRightRadius:40,
-        borderTopLeftRadius:15,
-        borderBottomLeftRadius:15,
+        borderTopRightRadius: 15,
+        borderBottomRightRadius: 40,
+        borderTopLeftRadius: 15,
+        borderBottomLeftRadius: 15,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center'
