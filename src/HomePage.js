@@ -51,9 +51,9 @@ const HomePage = ({ navigation }) => {
                             <View style={styles.title}>
                                 <Text style={{ fontSize: 24, fontFamily: liteFont, color: 'white' }}>Hi</Text>
                                 <Text style={{ fontSize: 22, fontFamily: baseFont, color: 'orange', marginLeft: 6 }}>Faheem,</Text>
-                                <View activeOpacity={0.9} style={{ paddingLeft: 180, alignItems: 'center'}}
+                                <View activeOpacity={0.9} style={{ paddingLeft: 180, alignItems: 'center' }}
                                     onPress={() => setModal(!modal)}>
-                                    <Icon name={"bell-ring"} size={30} color={'orange'}  onPress={() => setModal(!modal)}/>
+                                    <Icon name={"bell-ring"} size={30} color={'orange'} onPress={() => setModal(!modal)} />
                                 </View>
 
                             </View>
