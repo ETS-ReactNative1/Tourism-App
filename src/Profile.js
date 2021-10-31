@@ -188,7 +188,7 @@ export const Profile = ({ navigation }) => {
                             ) : (
                                 <Image
                                     source={{
-                                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLj3uBOTHHrRvQY0SDv_9a1dy2mOFpqcjfRQ&usqp=CAU',
+                                        uri: 'https://st2.depositphotos.com/1006318/5909/v/950/depositphotos_59095529-stock-illustration-profile-icon-male-avatar.jpg',
                                     }}
                                     style={[styles.image2]}
                                 />
@@ -363,6 +363,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FDF8',
         borderRadius: 500,
         // overflow: 'hidden'
+        elevation:2
 
     },
     image2: {
