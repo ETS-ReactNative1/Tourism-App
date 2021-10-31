@@ -132,9 +132,12 @@ const HomePage = ({ navigation }) => {
 
                             </View>
                         </ScrollView>
-                        <Text>eusdg</Text>
-                        <Text>eusdg</Text>
-
+                        <View style={styles.reelUnder}>
+                            <TouchableOpacity activeOpacity={0.7} style={styles.explore}>
+                                <Text style={{color:'#f1f5f9',fontFamily:liteFont,fontSize:18}}>Explore more places</Text>
+                                <Icon name={"arrow-decision-outline"} size={24} color={'black'} style={{marginLeft:10}} />
+                            </TouchableOpacity>
+                        </View>
 
                     </View>
                 </ScrollView>
@@ -274,6 +277,23 @@ const styles = StyleSheet.create({
         elevation: 2,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30
+    },
+    reelUnder:{
+        padding:10
+
+    },
+    explore: {
+        padding:12,
+        backgroundColor: 'orange',
+        borderTopRightRadius:15,
+        borderBottomRightRadius:40,
+        borderTopLeftRadius:15,
+        borderBottomLeftRadius:15,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center'
+
+
     }
 
 
