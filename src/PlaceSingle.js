@@ -64,7 +64,7 @@ const PlaceSingle = ({ navigation, route }) => {
         data.append('comment', comment);
         var config = {
             method: 'post',
-            url: global.baseUrl + 'review/',
+            url: global.baseUrl + 'reviews/',
             // headers: {
             // },
             data: data
@@ -85,7 +85,7 @@ const PlaceSingle = ({ navigation, route }) => {
     const getData = () => {
         var config = {
             method: 'get',
-            url: global.baseUrl + 'review/',
+            url: global.baseUrl + 'reviews/',
             // headers: {}
         };
 
