@@ -18,4 +18,4 @@
 
 
 
-#more pages on working for added
+# The app is on still working for final release....
