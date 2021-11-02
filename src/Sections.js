@@ -69,7 +69,7 @@ const Sections = () => {
 
                                     </Image>
                                 </View>
-                                <View style={{width:'100%',marginLeft: 5,justifyContent: 'center'}}>
+                                <View style={{width:'80%',marginLeft: 0,justifyContent: 'center'}}>
                                     <Text style={{ color: 'black', fontFamily: boldFont, fontSize: 16 }}>{items.name}</Text>
                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                         <Icon name={"map-marker-radius"} size={14} color={'black'} />
