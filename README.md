@@ -7,8 +7,8 @@
 -Download apk here..
 -https://drive.google.com/file/d/19FjszBbHzwpFxy19d3FW6_e2inEr2M7s/view?usp=sharing
 
-- Username :abu,
-- password:1234,
+- Username : abu
+- Password: 1234
 - nb:The places are demo purpose only
 
 - ![combine_images](https://user-images.githubusercontent.com/56709898/139790348-fa90b00b-6a9d-421d-8c3c-9d4ed0da8680.jpg)
