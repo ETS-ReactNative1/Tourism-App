@@ -15,6 +15,8 @@ import PlacesScreen from "./Places";
 import ListScreen from "./List";
 import PlaceSingle from "./PlaceSingle";
 import Section from "./Sections";
+import HotelSingle from "./Hotel";
+
 
 
 
@@ -121,6 +123,8 @@ const Navigation = () => {
             <Stack.Screen name="List" options={{ headerShown: false }} component={ListScreen} />
             <Stack.Screen name="PlaceSingle" options={{ headerShown: false }} component={PlaceSingle} />
             <Stack.Screen name="Sections" options={{ headerShown: false }} component={Section} />
+            <Stack.Screen name="HotelSingle" options={{ headerShown: false }} component={HotelSingle} />
+
 
 
 

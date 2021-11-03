@@ -27,15 +27,16 @@ const HomePage = ({ navigation }) => {
     ]
 
     const images = [
-        {   id: 1,
+        {
+            id: 1,
             uri: "https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg'",
         },
         {
-            id:2,
+            id: 2,
             uri: "https://images.unsplash.com/photo-1571501679680-de32f1e7aad4",
         },
         {
-            id:3,
+            id: 3,
             uri: "https://images.unsplash.com/photo-1571501679680-de32f1e7aad4",
         },
     ];
@@ -96,7 +97,8 @@ const HomePage = ({ navigation }) => {
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <View style={styles.category}>
                                 {category.map(item =>
-                                    <TouchableOpacity activeOpacity={0.8} style={styles.Art} key={item.id}>
+                                    <TouchableOpacity activeOpacity={0.8} style={styles.Art} key={item.id} onPress={() =>
+                                        navigation.navigate('HotelSingle')}>
                                         <View style={styles.imgContainer}>
                                             <Image style={styles.img} source={{ uri: item.image }} />
                                         </View>
